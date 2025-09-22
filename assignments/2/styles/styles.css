@@ -1,54 +1,63 @@
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
-body{
-    font-family: 'Inter', sans-serif;
-    margin: 0 0 0 10px;
-    line-height: 2;
-    color: #333;
-    background-color: #f8f8f8;
-    letter-spacing: 1px;
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0 0 0 10px;
+  line-height: 2;
+  color: #333;
+  background-color: #f8f8f8;
+  letter-spacing: 1px;
 }
-header{
-    text-align: center;
-    padding: 3rem 1rem;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
-#profile_pic{
-    border-radius: 50%;
-    border: 5px solid #667eea;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+#profile_pic {
+  border-radius: 50%;
+  border: 5px solid #667eea;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-h1{
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
-    color: #2c3e50;
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
 }
 header p {
-    font-size: 1.2rem;
-    color: #7f8c8d; 
-    margin-top: 0;
-    margin-bottom: 2rem;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 nav a {
-    text-decoration: none;
-    color: #667eea; 
-    font-weight: bold;
-    margin: 0 1.5rem;
-    font-size: 1.1rem;
-    transition: color 0.3s ease, transform 0.3s ease; 
+  text-decoration: none;
+  color: #667eea;
+  font-weight: bold;
+  margin: 0 1.5rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 nav a:hover {
-    color: #5a67d8; 
-    transform: translateY(-2px); 
+  color: #5a67d8;
+  transform: translateY(-2px);
 }
-#Contact img{
-    width: 30px;
-    height: 30px;
-    margin: 0 10px;
+#Contact img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+#header-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+#header-text {
+  text-align: left;
 }
