@@ -1,0 +1,83 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0 0 0 10px;
+  line-height: 2;
+  color: #333;
+  background-color: #ffffff;
+  letter-spacing: 1px;
+}
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+#profile_pic {
+  border-radius: 50%;
+  border: 5px solid #667eea;
+  object-fit: cover;
+  margin: 3rem 1.3rem 2rem 0;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 180px;
+  height: 200px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.1rem;
+  color: #2c3e50;
+}
+header p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+nav a {
+  text-decoration: none;
+  color: #334bb8;
+  font-weight: bold;
+  margin: 0 1.5rem;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+nav a:hover {
+  color: #041dfc;
+  transform: translateY(-2px);
+  text-decoration: underline;
+  text-decoration-color: #667eea;
+  text-underline-offset: 4px;
+}
+nav a.active {
+  text-decoration: underline;
+  text-decoration-color: #667eea;
+  text-underline-offset: 4px;
+}
+#Contact img {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+#header-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  margin-left: 12rem;
+  max-width: 800px;
+}
+#header-text {
+  text-align: left;
+}
+p {
+  text-align: justify;
+  max-width: 150ch;
+  margin: 0 1rem 1rem 1rem;
+}
+h3{
+    margin-left: 1.1rem;
+}
