@@ -19,7 +19,7 @@ header {
   border-radius: 50%;
   border: 5px solid #667eea;
   object-fit: cover;
-  margin-bottom: 1rem;
+  margin: 3rem 1.3rem 2rem 0;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 180px;
   height: 200px;
@@ -67,7 +67,7 @@ nav a.active {
   gap: 2rem;
   justify-content: center;
   margin-bottom: 2rem;
-  margin-left: 17rem;
+  margin-left: 12rem;
   max-width: 800px;
 }
 #header-text {
