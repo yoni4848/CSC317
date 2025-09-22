@@ -34,3 +34,15 @@ header p {
     margin-top: 0;
     margin-bottom: 2rem;
 }
+nav a {
+    text-decoration: none;
+    color: #667eea; 
+    font-weight: bold;
+    margin: 0 1.5rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+nav a:hover {
+    color: #5a67d8; 
+    transform: translateY(-2px); 
+}
