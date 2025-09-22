@@ -21,15 +21,17 @@ header {
   object-fit: cover;
   margin-bottom: 1rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 180px;
+  height: 200px;
 }
 
 h1 {
   font-size: 2.8rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   color: #2c3e50;
 }
 header p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #7f8c8d;
   margin-top: 0;
   margin-bottom: 2rem;
