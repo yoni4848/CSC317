@@ -16,7 +16,7 @@ header{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
 }
-.profile_pic{
+#profile_pic{
     border-radius: 50%;
     border: 5px solid #667eea;
     object-fit: cover;
@@ -47,7 +47,8 @@ nav a:hover {
     color: #5a67d8; 
     transform: translateY(-2px); 
 }
-.Contact >img{
-    width: 10px;
-    height: 10px;
+#Contact img{
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
 }
