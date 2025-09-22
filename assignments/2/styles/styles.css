@@ -73,8 +73,7 @@ nav a.active {
 #header-text {
   text-align: left;
 }
-p,
-li {
+p {
   text-align: justify;
   max-width: 150ch;
   margin: 0 1rem 1rem 1rem;
