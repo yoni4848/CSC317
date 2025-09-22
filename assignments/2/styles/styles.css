@@ -56,8 +56,16 @@ nav a:hover {
   display: flex;
   align-items: center;
   gap: 2rem;
+  justify-content: center;
   margin-bottom: 2rem;
+  margin-left: 10rem;
+  max-width: 800px;
 }
 #header-text {
   text-align: left;
+}
+p, li {
+  text-align: justify;
+  max-width: 150ch;
+  margin: 0 1rem 1rem 5px;
 }
