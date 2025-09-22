@@ -46,6 +46,14 @@ nav a {
 nav a:hover {
   color: #5a67d8;
   transform: translateY(-2px);
+  text-decoration: underline;
+  text-decoration-color: #667eea;
+  text-underline-offset: 4px;
+}
+nav a.active {
+  text-decoration: underline;
+  text-decoration-color: #667eea;
+  text-underline-offset: 4px;
 }
 #Contact img {
   width: 30px;
@@ -64,7 +72,8 @@ nav a:hover {
 #header-text {
   text-align: left;
 }
-p, li {
+p,
+li {
   text-align: justify;
   max-width: 150ch;
   margin: 0 1rem 1rem 5px;
