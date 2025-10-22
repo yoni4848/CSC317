@@ -37,3 +37,12 @@ header nav a{
     padding-left: 30px;
     color: black;
 }
+
+img{
+    display: flex;
+    margin: auto;
+    height: 300px;
+    width: 250px;
+    border-radius: 60%;
+    margin: 30px auto
+}
