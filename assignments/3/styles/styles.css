@@ -24,8 +24,16 @@ a{
 }
 
 header .headnav{
-    padding: 10px 30px;
-
     display: flex;
     justify-content: space-between;
+    padding: 10px 30px;
+}
+
+header nav {
+    padding-top: 10px;
+}
+
+header nav a{
+    padding-left: 30px;
+    color: black;
 }
