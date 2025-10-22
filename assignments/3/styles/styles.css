@@ -22,3 +22,10 @@ a{
     color: var(--link-color);
     text-decoration: none;
 }
+
+header .headnav{
+    padding: 10px 30px;
+
+    display: flex;
+    justify-content: space-between;
+}
