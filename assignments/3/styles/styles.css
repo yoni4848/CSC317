@@ -1,0 +1,24 @@
+:root{
+    --text-color: 1a1c20;
+    --link-color:#4a76ee;
+    --backround-color: #f6f7f8;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+
+}
+body{
+    background-color:#f6f7f8;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--backround-color);
+
+}
+a{
+    color: var(--link-color);
+    text-decoration: none;
+}
