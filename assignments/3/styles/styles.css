@@ -56,6 +56,44 @@ img{
     margin-bottom: 20px;
 }
 #About p{
-    color: #666;
     margin-bottom: 15px;
 }
+
+#Skills {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+#Skills h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+#Skills h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#Skills ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#Skills li {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+#Skills li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
