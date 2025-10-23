@@ -46,3 +46,16 @@ img{
     border-radius: 60%;
     margin: 30px auto
 }
+#About{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+#About h2{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+#About p{
+    color: #666;
+    margin-bottom: 15px;
+}
