@@ -44,6 +44,15 @@ img {
   border-radius: 60%;
   margin: 30px auto;
 }
+
+header h1{
+    text-align: center;
+}
+
+header p{
+    text-align: center;
+}
+
 #About {
   max-width: 900px;
   margin: 0 auto;
