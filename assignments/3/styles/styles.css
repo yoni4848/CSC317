@@ -97,4 +97,32 @@ img{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+#Projects {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
 
+#Projects h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+#Projects ol {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#Projects li {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#Projects li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
