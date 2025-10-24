@@ -138,6 +138,14 @@ header p{
   max-width: 900px;
   margin: 0 auto;
 }
+#Contact h2{
+  margin-bottom: 15px;
+}
+#Contact i{
+  padding: 0 10px;
+  font-size: 2.5rem;
+  margin-right: 20px;
+}
 @media (max-width: 768px) {
   #About {
     padding: 30px 15px;
