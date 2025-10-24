@@ -1,8 +1,4 @@
-:root {
-  --text-color: 1a1c20;
-  --link-color: #4a76ee;
-  --backround-color: #f6f7f8;
-}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,10 +10,10 @@ html {
 body {
   background-color: #f6f7f8;
   font-family: "Poppins", sans-serif;
-  background-color: var(--backround-color);
+  background-color: #f6f7f8;
 }
 a {
-  color: var(--link-color);
+  color: #4a76ee;
   text-decoration: none;
 }
 
