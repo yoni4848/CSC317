@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Protfolio</title>
-    <link rel="stylesheet" href="/styles/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/styles.css" id="theme-style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
   </head>
   <body>
     <header>
+      <div class="headnav">
+        <h1 class>Yonas Melkie's Portfolio</h1>
+        <nav>
+          <a href="#About">About</a>
+          <a href="#Skills">Skills</a>
+          <a href="#Projects">Projects</a>
+          <a href="#Contact">Contact</a>
+        </nav>
+      </div>
       <img
         id="profile_pic"
         src="images/275804038_2790083314471394_461145730567040956_n.jpg"
         alt="Head and shoulder picture of Yonas"
-      />
+      >
       <h1>Yonas Melkie</h1>
       <p>Computer Science Student</p>
-      <nav>
-        <a href="#About">About</a>
-        <a href="#Skills">Skills</a>
-        <a href="#Projects">Projects</a>
-        <a href="#Contact">Contact</a>
-      </nav>
     </header>
     <section id="About">
       <h2>About Me</h2>
@@ -38,15 +40,6 @@
         diving into the latest JavaScript frameworks, exploring backend
         architectures, or experimenting with new design patterns, I approach
         every coding challenge with curiosity and determination.
-      </p>
-      <p>
-        When I'm not immersed in code, you'll find me on the soccer field where
-        I love the teamwork and strategy of the game, catching up on the latest
-        movies and TV shows (I'm always open to recommendations!), or spending
-        quality time with friends. I've found that these experiences outside of
-        programming actually make me a better developer. Soccer teaches me about
-        collaboration and quick thinking, while movies inspire my creativity and
-        storytelling through code.
       </p>
       <p>
         I'm always eager to take on new challenges, contribute to meaningful
@@ -72,18 +65,18 @@
         <li>Git & Github</li>
         <li>VS Code</li>
         <li>XCode</li>
-        <li>Terminal / Command Line</li>
+        <li>Terminal</li>
         <li>Claude Code</li>
         <li>InteliJ</li>
         <li>Cursor</li>
+        <li>MySQL</li>
       </ul>
     </section>
     <section id="Projects">
       <h2>Recent Projects</h2>
       <ol>
         <li>
-          Banking System - Full-Stack web application with user authentication,
-          account management, and transaction processing using Java and
+          Banking System - Full-Stack web application built using Java and
           Springboot. (Vibe coded)
         </li>
         <li>Breakout Game - The classic breakout game built with Java.</li>
@@ -91,28 +84,42 @@
           Chuck Norris Cypher - Encryption/decryption tool built using Java.
         </li>
         <li>
-          Menbesway.org - A non-profit live website built using typescript and
-          react(Vibe coded).
+          <a>menbesway.org</a> - A non-profit live website built using
+          typescript and react(Vibe coded).
         </li>
         <li>
           Tic-tac-toe Game - A commad line based tic-tac-toe game built using
           Java.
         </li>
+        <li>
+          <a>yoni4848.github.io</a> - A basic HTML and CSS static personal
+          protfolio website.
+        </li>
       </ol>
     </section>
-    <section id="Contact">
+    <footer id="Contact">
+
       <h2>Contact</h2>
-      <a href="mailto:yonasmelkie@gmail.com" target="_blank"
-        ><img src="images/envelope-solid-full.svg" alt="email logo"
-      /></a>
-      <a href="https://github.com/yoni4848" target="_blank"
-        ><img src="images/github-brands-solid-full.svg" alt="github logo"
-      /></a>
-      <a
-        href="https://www.linkedin.com/in/yonas-melkie-60b9712a1/"
-        target="_blank"
-        ><img src="images/linkedin-brands-solid-full.svg" alt="linkedin logo"
-      /></a>
-    </section>
+
+      <a href="mailto:yonasmelkie@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+
+      <a href="https://github.com/yoni4848" target="_blank"><i class="fa-brands fa-github"></i></a>
+
+      <a href="https://www.linkedin.com/in/yonas-melkie-60b9712a1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+
+    </footer>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <h3>Theme Switcher</h3>
+      <div class="theme-buttons">
+        <button class="theme-button active" data-theme="styles">
+          Hand-Written
+        </button>
+        <button class="theme-button" data-theme="ai-1">AI 1</button>
+        <button class="theme-button" data-theme="ai-image">AI Image</button>
+        <button class="theme-button" data-theme="hybrid">Hybrid</button>
+      </div>
+    </div>
+    <script src="js/switcher.js"></script>
   </body>
 </html>
