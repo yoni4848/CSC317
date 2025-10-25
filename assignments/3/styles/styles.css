@@ -18,7 +18,7 @@ a {
 }
 
 header .logo{
-  margin: -80px 0 0 -55px;
+  margin: -90px 0 0 -55px;
 }
 
 header .headnav {
@@ -40,7 +40,7 @@ header nav a {
 
 img {
   display: flex;
-  margin: 10px auto 30px;
+  margin: 0px auto 30px;
   height: 300px;
   width: 250px;
   border-radius: 60%;
