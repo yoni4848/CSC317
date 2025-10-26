@@ -1,0 +1,227 @@
+/* =========================================================
+   AI-2.css — Dark portfolio theme (brittanychiang.com–inspired)
+   Matches Yoni Melkie's index.html structure EXACTLY.
+   ========================================================= */
+
+/* ---------------------------
+   CSS Variables (Theming)
+   --------------------------- */
+:root{
+  --background:#0A192F;
+  --surface:#0E2245;
+  --text:#CCD6F6;
+  --muted:#94A3B8;
+  --accent:#64FFDA;
+  --accent-weak:rgba(100,255,218,.15);
+  --link:#64FFDA;
+  --shadow:0 6px 30px rgba(2,12,27,.25);
+  --radius:14px;
+  --sp-1:.5rem;
+  --sp-2:1rem;
+  --sp-3:1.5rem;
+  --sp-4:2rem;
+  --sp-5:3rem;
+  --maxw:1100px;
+  --speed:220ms;
+}
+
+/* Base Reset */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  color:var(--text);
+  background:radial-gradient(1200px 800px at 10% 0%, #0C1C36, var(--background)) fixed;
+  line-height:1.65;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:var(--link); text-decoration:none}
+a:hover, a:focus-visible{filter:brightness(1.15)}
+
+/* Shared Section Styles */
+header, section, footer{
+  width:min(var(--maxw), 92%);
+  margin-inline:auto;
+  padding: var(--sp-5) 0;
+}
+section + section{border-top:1px solid rgba(148,163,184,.15)}
+
+/* ---------------------------
+   Header + Navigation
+   --------------------------- */
+.headnav{
+  position: sticky;
+  top:0;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(to bottom, rgba(10,25,47,.9), rgba(10,25,47,.6));
+  border-bottom: 1px solid rgba(148,163,184,.12);
+  padding: .6rem 0;
+}
+.headnav .logo{
+  width:46px; height:auto;
+  filter: drop-shadow(0 3px 10px rgba(2,12,27,.35));
+}
+.headnav nav{
+  float:right;
+  display:flex;
+  gap:1.25rem;
+}
+.headnav nav a{
+  position:relative;
+  color:var(--text);
+  font-weight:600;
+}
+.headnav nav a::after{
+  content:'';
+  position:absolute;
+  left:0; bottom:-4px;
+  width:0; height:2px;
+  background:var(--accent);
+  transition:width var(--speed) ease;
+}
+.headnav nav a:hover::after{width:100%}
+
+/* ---------------------------
+   Hero Section
+   --------------------------- */
+header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+#profile_pic{
+  width:160px; height:160px;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid var(--accent);
+  box-shadow: 0 12px 40px rgba(100,255,218,.2);
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+header h1{
+  font-size: clamp(2rem, 5vw, 3rem);
+  color:#E6F1FF;
+}
+header p{color:var(--muted);}
+
+/* ---------------------------
+   About Section
+   --------------------------- */
+#About{
+  display:grid;
+  gap: var(--sp-3);
+  grid-template-columns: 1fr;
+  animation: fadeIn .6s ease both;
+}
+#About h2{
+  font-size:1.8rem;
+  color:#E6F1FF;
+}
+
+/* ---------------------------
+   Skills Section
+   --------------------------- */
+#Skills{
+  display:grid;
+  gap: var(--sp-3);
+  grid-template-columns: 1fr;
+}
+#Skills ul{
+  list-style:none;
+  padding:0;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:.5rem;
+}
+#Skills li{
+  color:var(--muted);
+  position:relative;
+  padding-left:1.15rem;
+}
+#Skills li::before{
+  content:'▹';
+  position:absolute;
+  left:0;
+  color:var(--accent);
+}
+
+/* ---------------------------
+   Projects Section
+   --------------------------- */
+#Projects ol{
+  list-style:none;
+  padding:0;
+  display:grid;
+  gap:.9rem;
+}
+#Projects li{
+  background: linear-gradient(180deg, rgba(14,34,69,.65), rgba(14,34,69,.35));
+  border:1px solid rgba(100,255,218,.18);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--speed), box-shadow var(--speed);
+}
+#Projects li:hover{
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* ---------------------------
+   Contact Section
+   --------------------------- */
+#Contact{
+  text-align:center;
+  padding-bottom: var(--sp-5);
+}
+#Contact p{color:var(--muted);}
+.icons{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  margin-top: var(--sp-3);
+}
+.icons a{
+  width:42px; height:42px;
+  display:grid; place-items:center;
+  color:var(--accent);
+  border:1px solid var(--accent-weak);
+  border-radius:10px;
+  transition: transform var(--speed);
+}
+.icons a:hover{transform:translateY(-3px);}
+
+/* ---------------------------
+   Theme Switcher
+   --------------------------- */
+.theme-switcher{
+  position: fixed;
+  right: 18px; bottom: 18px;
+  background: rgba(14,34,69,.65);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius: 16px;
+  padding: .9rem;
+  backdrop-filter: blur(6px);
+  color:var(--text);
+  box-shadow: 0 8px 26px rgba(2,12,27,.35);
+}
+.theme-button{
+  cursor:pointer;
+  border:1px solid rgba(148,163,184,.22);
+  border-radius: 999px;
+  padding:.4rem .8rem;
+  background: transparent;
+  color:var(--text);
+}
+.theme-button.active{
+  background: var(--accent-weak);
+  border-color: var(--accent);
+}
+
+/* ---------------------------
+   Animations
+   --------------------------- */
+@keyframes fadeIn{
+  from{opacity:0; transform: translateY(6px)}
+  to{opacity:1; transform: translateY(0)}
+}
