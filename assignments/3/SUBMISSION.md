@@ -12,12 +12,14 @@
 # Portfolio Styling Assignment Analysis
 
 ## Group Analysis (250-500 words)
-[Write a collaborative analysis comparing the different approaches. Each member should contribute to this section.]
+
+I think everyone on our team did an excellent job. There are elements I appreciate from each person's work. We picked and chose the best parts of each styling approach to create hybrid.css. I believe we were able to achieve these impressive results and work together effectively because we communicated with each other well throughout the project. Everyone was clearly assigned their specific task from the beginning, which helped us stay organized and productive as we worked on the assignment.
 
 ## Individual Reflections
 
 ### [Yonas Melkie] - Hand-written CSS (Part 1)
-[Individual reflection on lessons learned and contribution to hand-written CSS]
+This group assignment has taught me how professionals use tools like GitHub to collaborate on projects. Working with my team members on different branches and merging our work together gave me practical experience with github workflows that are essential in the software development industry. Although I completed the hand-written CSS for the body section, my groupmates who worked on the AI-generated CSS using both image and text prompts, did an amazing job and produced an amazing-looking result that showed the potential of AI tools in web development. Through this assignment, I have learned that I can use AI as a tool to be more productive and express my creativity in a different way. The comparison between my hand-written approach and the AI-generated approaches was eye-opening. While writing CSS manually help me to learn and understanding of each style property, the AI approaches achieved sophisticated designs much faster. This experience has changed my perspective on what it means to be a developer in the age of AI.
+I believe the hardest part of web development is coming up with unique ideas and creative solutions, not writing 300-400 lines of HTML/CSS—that can be tedious and time-consuming work. If AI can handle the tedious implementation tasks and let me focus on being creative, conceptualizing designs, and solving complex problems, that is a significant advantage. This doesn't diminish the value of understanding CSS fundamentals, which I gained through the hand-written portion. Rather, it suggests a future where developers focus more on design thinking and user experience while AI assists with implementation details.
 
 ### [Adarsha Bomjan] - Hand-written CSS (Part 2)
 [Individual reflection on lessons learned and contribution to hand-written CSS]
