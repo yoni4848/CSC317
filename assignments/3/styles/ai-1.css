@@ -42,7 +42,22 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
   text-align: center;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-sm) 0 var(--spacing-xl) 0;
+}
+
+.headnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-lg) auto;
+  padding: 0 var(--spacing-md);
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 #profile_pic {
@@ -57,10 +72,7 @@ header {
 
 nav {
   display: flex;
-  justify-content: center;
   gap: var(--spacing-lg);
-  flex-wrap: wrap;
-  margin-top: var(--spacing-md);
 }
 
 nav a {
@@ -117,25 +129,59 @@ h2 {
   background-color: var(--bg-secondary);
 }
 
-#Contact a {
-  display: inline-block;
-  margin: 0 var(--spacing-md);
-  transition: opacity 0.3s;
+#Projects a {
+  color: var(--accent-cyan);
+  text-decoration: none;
 }
 
-#Contact a:hover {
-  opacity: 0.7;
+#Projects a:hover {
+  text-decoration: underline;
 }
 
-#Contact img {
-  width: 50px;
-  height: 50px;
+footer {
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background-color: var(--bg-secondary);
+}
+
+footer h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+footer p {
+  margin-bottom: var(--spacing-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.icons a {
+  color: var(--text-light-gray);
+  font-size: 2rem;
+  transition: all 0.3s;
+}
+
+.icons a:hover {
+  color: var(--accent-cyan);
+  transform: translateY(-3px);
 }
 
 @media (max-width: 768px) {
+  .headnav {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
   nav {
     flex-direction: column;
     align-items: center;
+    gap: var(--spacing-sm);
   }
   
   #profile_pic {
@@ -154,8 +200,7 @@ h2 {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
   
-  #Contact img {
-    width: 40px;
-    height: 40px;
+  .icons a {
+    font-size: 1.5rem;
   }
 }
