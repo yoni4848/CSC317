@@ -33,17 +33,34 @@ header nav {
   padding-top: 30px;
 }
 
-header nav a {
-  padding-left: 30px;
+header a {
+  display: inline-block;
+  padding: 10px 20px;
   color: black;
+  width: 100px;
 }
 
-img {
+header a:hover{
+  font-weight: 900;
+  font-size: large;
+  padding: 8px 18px;
+}
+
+header img {
   display: flex;
   margin: 0px auto 30px;
   height: 300px;
   width: 250px;
   border-radius: 60%;
+}
+
+header #profile_pic {
+  display: flex;
+  margin: 0px auto 30px;
+  height: 300px;
+  width: 250px;
+  border-radius: 60%;
+  border: 3px solid black;
 }
 
 header h1{
