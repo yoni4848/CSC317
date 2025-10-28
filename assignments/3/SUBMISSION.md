@@ -29,6 +29,11 @@ I believe the hardest part of web development is coming up with unique ideas and
 
 ### [Favour Godbless] - AI Image+Text Prompt CSS 
 [Individual reflection on AI prompting with images and lessons learned]
+Favour Godbless – AI Image + Text Prompt CSS
+
+For my part of the project, I used an image reference from brittanychiang.com along with our group’s index.html file to create a dark, modern version of our portfolio. I wanted the site to look clean, professional, and easy to read, so I focused on a dark background, teal accents, and smooth animations that make it feel alive.
+
+I worked with my teammates to fix small issues, like making the logo more visible and adjusting the layout for phones. I ended up using the brightness(0) invert(1) filter to make the logo stand out better against the dark background. Overall, this task taught me how to guide AI tools to get a design that actually fits the code we already have, and how small details can make a big difference in how a website feels.
 
 ## Group Preferred Version
 [Explain which version the group prefers and why - this should be a consensus decision]
