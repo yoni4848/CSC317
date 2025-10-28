@@ -26,6 +26,7 @@ header .headnav {
   justify-content: space-between;
   padding: 30px calc((100% - 900px) / 2);
   max-width: 100%;
+
 }
 
 header nav {
@@ -34,7 +35,7 @@ header nav {
 
 header a {
   display: inline-block;
-  padding-left: 10px 20px;
+  padding: 10px 20px;
   color: black;
   width: 100px;
 }
