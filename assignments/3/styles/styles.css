@@ -273,11 +273,3 @@ header p{
 #Contact a:hover{
   transform: scale(1.2);
 }
-
-#Contact .top{
-  display: flex;
-  margin: auto;
-  margin-top: 30px;
-  text-decoration: underline;
-  font-size: small;
-}
