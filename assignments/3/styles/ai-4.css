@@ -332,8 +332,10 @@ section p {
 
 .theme-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .theme-button {
@@ -352,7 +354,7 @@ section p {
 .theme-button:hover {
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
   border-color: var(--bright-accent);
-  transform: translateX(-5px);
+  transform: translateY(-2px);
 }
 
 .theme-button.active {
