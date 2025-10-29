@@ -33,7 +33,14 @@ For the gripu work I did hand-written part with Yonas, he was working on body se
 [Individual reflection on AI prompting with images and lessons learned]
 
 ## Group Preferred Version
-[Explain which version the group prefers and why - this should be a consensus decision]
+The group preferres the AI version 3, we chose that because it looked unique and clean compared to the other versions which looked a bit simmilar. 
+
 
 ## Collaboration Experience
-[Describe how the group worked together, challenges faced, and lessons learned about teamwork]
+We worked together by collaborting on github and communicating on Discord. 
+Some of the challenges we faced include:
+- merge conflicts
+- getting familiar with github
+- creating a new pull request was a challege time to time
+
+Other than those everything was smooth. 
