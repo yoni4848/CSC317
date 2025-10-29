@@ -1,0 +1,1 @@
+Style the html file I uploaded using CSS only. MAke it a responsive web design. Try to center all the content. The font, font-size, line height, font gap, etc. should be consistent. The color theme should be gradient dark and bright. Style the image.
