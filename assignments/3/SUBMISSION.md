@@ -14,6 +14,7 @@
 ## Group Analysis (250-500 words)
 
 I think everyone on our team did an excellent job. There are elements I appreciate from each person's work. We picked and chose the best parts of each styling approach to create hybrid.css. I believe we were able to achieve these impressive results and work together effectively because we communicated with each other well throughout the project. Everyone was clearly assigned their specific task from the beginning, which helped us stay organized and productive as we worked on the assignment.
+I worked on hand-wtitten part with Yonas whereas other members worked on AI part. Everyone did a great job on their parts, we faced some problems on github but we were able to solve it with our teamwork. Yonas worked on body at first, I did nav, header, and footer according to what he has already set up. I faced some issues while maiking hover. Other than that, it was flawless with the help of my group mates. We made a disocrd server to communicate with eachother on discord which helped us to keep everything clear. Overall, I think we did a good work.
 
 ## Individual Reflections
 
