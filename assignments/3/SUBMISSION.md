@@ -23,6 +23,8 @@ I believe the hardest part of web development is coming up with unique ideas and
 
 ### [Adarsha Bomjan] - Hand-written CSS (Part 2) + Ai css-4
 [Individual reflection on lessons learned and contribution to hand-written CSS]
+From this assignment I learned how to do a collaborative work on github without conflicting with eachother. Sending pull requests, creating branches, and working on that branch before sending pull request inorder to merge it with main, these things helped me and my teammates work smoothly. Also making an idea and following same idea helped us make our work easy.
+For the gripu work I did hand-written part with Yonas, he was working on body section while I was working on header, nav, and footer. At first, I thought it is going to be confusing and difficult to work on same file but it was way easier and smoother than I expected.
 
 ### [Roberto Ledesma Toledo] - AI Text Prompt CSS
 [Individual reflection on AI prompting experience and lessons learned]
