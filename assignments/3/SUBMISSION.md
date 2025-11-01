@@ -15,6 +15,8 @@
 
 I think everyone on our team did an excellent job. There are elements I appreciate from each person's work. We picked and chose the best parts of each styling approach to create hybrid.css. I believe we were able to achieve these impressive results and work together effectively because we communicated with each other well throughout the project. Everyone was clearly assigned their specific task from the beginning, which helped us stay organized and productive as we worked on the assignment.
 I worked on hand-wtitten part with Yonas whereas other members worked on AI part. Everyone did a great job on their parts, we faced some problems on github but we were able to solve it with our teamwork. Yonas worked on body at first, I did nav, header, and footer according to what he has already set up. I faced some issues while maiking hover. Other than that, it was flawless with the help of my group mates. We made a disocrd server to communicate with eachother on discord which helped us to keep everything clear. Overall, I think we did a good work.
+I believe as a group we did a great job when it came down to communication and getting the code done. As I worked on my section, Yonas provided feedback on my prompt and make sure I was able to have a functional css. Our team also picked great parts of the styling to complete our hybrid.css section. Overall our team did great working together and keeping eachother on track. 
+
 
 ## Individual Reflections
 
@@ -28,6 +30,10 @@ For the gripu work I did hand-written part with Yonas, he was working on body se
 
 ### [Roberto Ledesma Toledo] - AI Text Prompt CSS
 [Individual reflection on AI prompting experience and lessons learned]
+For the AI text prompt CSS part of the project I took the time to make sure i covered every part of the html file in the CSS prompt. I also wanted to have more of darker color for the background color and also added a cyan color for the hover. I also mentioned in the prompt that it should work on different devices.
+
+My teamates and I worked on making sure any small issues in the AI CSS output is fixed. The only issue was the logo being more visible and the margin between the nav bar and the margin between the logo and the top of the website. While working on these fixes I also practiced more of the git prompts.
+
 
 ### [Favour Godbless] - AI Image+Text Prompt CSS 
 
