@@ -83,6 +83,9 @@ calculator.addEventListener("click", (event) => {
         let result = calc(num1, num2, opp);
         display.textContent = result.toString();
         resultShown = true;
+    } else if (target.classList.contains("sign-toggle")){
+        let result = -1 * Number(display.textContent);
+        display.textContent = result.toString();
     }
 
 });
