@@ -1,54 +1,102 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: "Arial", sans-serif;
-    background-color: #a38a8b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #a38a8b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-.calculator{
-    width: 320px;
-    background-color: #2d2d2d;
-    border-radius: 20px;
-    padding: 20px;
-    box-sizing: 0, 10px, 50px,rgba(0,0,0, 0.3);
+.calculator {
+  width: 320px;
+  background-color: #2d2d2d;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: 0, 10px, 50px, rgba(0, 0, 0, 0.3);
 }
 
-.display{
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-size: 2.5rem;
-    border-radius: 10px;
-    text-align: right;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    min-height: 80px;
+.display {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 2.5rem;
+  border-radius: 10px;
+  text-align: right;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  min-height: 80px;
 }
 
-.buttons{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
-.btn{
-    font-size: 1.4rem;
-    font-weight: bold;
-    background-color: #505050;
-    color: #ffffff;
-    border-radius: 10px;
-    border: none;
-    padding: 20px;
-    transition: all 0.2s;
-    cursor: pointer;
+.btn {
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: #505050;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  padding: 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn.opp {
+  background-color: #ff9503;
+}
+.btn.clear {
+  background-color: #FF0000;
+}
+.btn.equals {
+  background-color: #4bae51;
+}
+.btn.backspace{
+    background-color: #f34236;
+}
+.btn:hover{
+    transform: scale(1.05);
+    background-color: #706f6f;
+}
+.btn.opp:hover{
+    background-color: #bc7109;
+}
+.btn.clear:hover{
+    background-color: #b00606;
+}
+.btn.backspace:hover{
+     background-color:  #ab3535;
+}
+.btn.equals:hover{
+    background-color:  #2d622f;
+}
+
+.btn.num:active{
+    transform: scale(0.95);
+}
+
+.btn.decimal:active{
+    transform: scale(0.95);
+}
+.btn.opp:active{
+    transform: scale(0.95);
+}
+.btn.equals:active{
+    transform: scale(0.95);
+}
+.btn.clear:active{
+    transform: scale(0.95);
+}
+.btn.backspace:active{
+    transform: scale(0.95);
 }
