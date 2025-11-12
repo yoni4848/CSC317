@@ -13,7 +13,25 @@ body{
     min-height: 100vh;
 }
 
-.display{
+.calculator{
+    max-width: 320px;
+    background-color: #2d2d2d;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: 0, 10px, 50px,rgba(0,0,0, 0.3);
+}
 
+.display{
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 2.5rem;
+    border-radius: 10px;
+    text-align: end;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    min-height: 80px;
 
 }
