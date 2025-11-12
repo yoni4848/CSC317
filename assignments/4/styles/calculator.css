@@ -33,6 +33,10 @@ body {
   justify-content: flex-end;
   margin-bottom: 20px;
   min-height: 80px;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .buttons {
