@@ -70,6 +70,11 @@ calculator.addEventListener("click", (event) => {
         }
     } else if (target.classList.contains("clear")) {
         display.textContent = "0";
+        num1 = null;
+        num2 = null;
+        opp = null;
+        waitingNum2 = false;
+        resultShown = false;
     } else if (target.classList.contains("backspace")) {
         if (display.textContent.length === 1) {
             display.textContent = "0";
@@ -131,7 +136,13 @@ document.addEventListener("keydown", (event) => {
         display.textContent = result.toString();
         resultShown = true;
 
-    }
+    } else if (key === "Backspace") {
+        if (display.textContent.length === 1) {
+            display.textContent = "0";
+        } else {
+            display.textContent = display.textContent.slice(0, -1);
+        }
+    } 
 
 
 });
