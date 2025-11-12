@@ -150,7 +150,7 @@ document.addEventListener("keydown", (event) => {
         opp = null;
         waitingNum2 = false;
         resultShown = false;
-    }
+    } 
 
 
 });
