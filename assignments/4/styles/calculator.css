@@ -40,3 +40,15 @@ body{
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
+
+.btn{
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: #505050;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
