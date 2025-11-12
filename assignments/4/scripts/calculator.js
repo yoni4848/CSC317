@@ -143,6 +143,14 @@ document.addEventListener("keydown", (event) => {
             display.textContent = display.textContent.slice(0, -1);
         }
     } 
+    else if (key === "Escape"){
+        display.textContent = "0";
+        num1 = null;
+        num2 = null;
+        opp = null;
+        waitingNum2 = false;
+        resultShown = false;
+    }
 
 
 });
