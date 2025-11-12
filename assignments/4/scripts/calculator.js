@@ -6,6 +6,27 @@ let opp = null;
 let waitingNum2 = false;
 
 
+const add = (num1, num2) => {
+    return num1 + num2;
+}
+const sub = (num1, num2) => {
+    return num1 - num2;
+}
+const mult = (num1, num2) => {
+    return num1 * num2;
+}
+const div = (num1, num2) => {
+    if (num2 === 0) {
+        return "Err!"
+    } else {
+        return num1 / num2;
+    }
+}
+const percent = (num1, num2) => {
+    return (num1 * num2) / 100;
+}
+
+
 calculator.addEventListener("click", (event) => {
     const target = event.target;
 
