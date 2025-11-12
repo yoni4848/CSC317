@@ -62,7 +62,7 @@ calculator.addEventListener("click", (event) => {
         }
         if (display.textContent == "0" || resultShown) {
             display.textContent = target.textContent;
-            if (resultShown){
+            if (resultShown) {
                 resultShown = false;
             }
         } else {
@@ -82,24 +82,37 @@ calculator.addEventListener("click", (event) => {
             opp = target.getAttribute("data-value");
             waitingNum2 = true;
         }
-    } else if (target.classList.contains("equals")){
+    } else if (target.classList.contains("equals")) {
         num2 = display.textContent;
         let result = calc(num1, num2, opp);
-        if (result.toString().includes('.')){
+        if (result.toString().includes('.')) {
             display.textContent = result.toFixed(2).toString();
-        }
-        else if (result >= 10000){
+        } else if (result >= 10000) {
             display.textContent = result.toExponential(2).toString();
         } else {
-        display.textContent = result.toString();
+            display.textContent = result.toString();
         }
-        
+
         resultShown = true;
-    } else if (target.classList.contains("sign-toggle")){
+    } else if (target.classList.contains("sign-toggle")) {
         let result = -1 * Number(display.textContent);
         display.textContent = result.toString();
     }
 
+});
 
-
+document.addEventListener("keydown", (event) => {
+    let key = event.key;
+    if (!isNaN(key) || key === '.') {
+        if (waitingNum2 || resultShown) {
+            display.textContent = "";
+            waitingNum2 = false;
+            resultShown = false;
+        }
+        if (display.textContent === "0" || display.textContent == "") {
+            display.textContent = key;
+        } else {
+            display.textContent += key;
+        }
+    }
 });
