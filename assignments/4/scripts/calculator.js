@@ -114,5 +114,12 @@ document.addEventListener("keydown", (event) => {
         } else {
             display.textContent += key;
         }
-    }
+    } else if (key === "+" || key === "-" || key === "*" || key === "/" || key === "%") {
+        if (!waitingNum2) {
+            opp = key;
+            num1 = display.textContent;
+            waitingNum2 = true;
+        }
+    } 
+
 });
