@@ -100,3 +100,6 @@ body {
 .btn.backspace:active{
     transform: scale(0.95);
 }
+.btn.sign-toggle:active{
+  transform: scale(0.95);
+}
