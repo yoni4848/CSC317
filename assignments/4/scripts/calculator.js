@@ -26,6 +26,26 @@ const percent = (num1, num2) => {
     return (num1 * num2) / 100;
 }
 
+const calc = (num1, num2, opp) => {
+    if (isNaN(num1) || isNaN(num2)){
+        return "Err!";
+    }
+    switch (opp){
+        case "+":
+            return add(num1, num2);
+        case "-":
+            return sub(num1, num2);
+        case "*":
+            return mult(num1, num2);
+        case "/":
+            return div(num1, num2);
+        case "%":
+            return percent(num1, num2);
+        default:
+            return "Err!";
+    }
+}
+
 
 calculator.addEventListener("click", (event) => {
     const target = event.target;
