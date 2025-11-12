@@ -85,11 +85,21 @@ calculator.addEventListener("click", (event) => {
     } else if (target.classList.contains("equals")){
         num2 = display.textContent;
         let result = calc(num1, num2, opp);
+        if (result.toString().includes('.')){
+            display.textContent = result.toFixed(2).toString();
+        }
+        else if (result >= 10000){
+            display.textContent = result.toExponential(2).toString();
+        } else {
         display.textContent = result.toString();
+        }
+        
         resultShown = true;
     } else if (target.classList.contains("sign-toggle")){
         let result = -1 * Number(display.textContent);
         display.textContent = result.toString();
     }
+
+
 
 });
