@@ -31,6 +31,10 @@ const calc = (num1, num2, opp) => {
     if (isNaN(num1) || isNaN(num2)) {
         return "Err!";
     }
+
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+
     switch (opp) {
         case "+":
             return add(num1, num2);
@@ -74,12 +78,12 @@ calculator.addEventListener("click", (event) => {
         }
     } else if (target.classList.contains("opp")) {
         if (!waitingNum2) {
-            num1 = Number(display.textContent);
+            num1 = display.textContent;
             opp = target.getAttribute("data-value");
             waitingNum2 = true;
         }
     } else if (target.classList.contains("equals")){
-        num2 = Number(display.textContent);
+        num2 = display.textContent;
         let result = calc(num1, num2, opp);
         display.textContent = result.toString();
         resultShown = true;
