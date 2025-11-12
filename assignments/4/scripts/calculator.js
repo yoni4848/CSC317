@@ -120,6 +120,18 @@ document.addEventListener("keydown", (event) => {
             num1 = display.textContent;
             waitingNum2 = true;
         }
-    } 
+    } else if (key === "Enter") {
+        num2 = display.textContent;
+        let result = calc(num1, num2, opp);
+        if (result.toString().includes('.')) {
+            result = result.toFixed(2);
+        } else if (result >= 10000) {
+            result = result.toExponential(2);
+        }
+        display.textContent = result.toString();
+        resultShown = true;
+
+    }
+
 
 });
