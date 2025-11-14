@@ -3,7 +3,7 @@
   **Name:** Yonas Melkie
   **Student ID:** 920771108
   **GitHub Repository:** https://github.com/yoni4848/CSC317/tree/main/assignments/4 
-  **GitHub Pages URL:**  https://yoni4848.github.io/CSC317assignments/4/index.html
+  **GitHub Pages URL:**  https://yoni4848.github.io/CSC317/assignments/4/index.html
 
 
 ## Project Overview
