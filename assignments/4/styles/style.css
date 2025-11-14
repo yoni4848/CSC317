@@ -870,3 +870,42 @@ button:focus-visible {
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+.project-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-text {
+  flex: 1;
+}
+
+.project-preview {
+  display: block;
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+  margin-right: 80px;
+}
+
+.project-preview:hover {
+  transform: scale(1.05);
+  border-color: #d4af37;
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+}
+
+.project-content a::after {
+  content: none;
+}
+
+#Projects li p {
+  margin: 0;
+  color: #d4c5b9;
+  font-size: 0.95rem;
+}
