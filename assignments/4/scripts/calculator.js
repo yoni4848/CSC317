@@ -55,7 +55,15 @@ const calc = (num1, num2, opp) => {
 calculator.addEventListener("click", (event) => {
     const target = event.target;
 
-    if (target.classList.contains("num") || target.classList.contains("decimal")) {
+    if (target.classList.contains("decimal")) {
+        if (waitingNum2 || resultShown || display.textContent === "0") {
+            display.textContent = "0.";
+            waitingNum2 = false;
+            resultShown = false;
+        } else if (!display.textContent.includes(".")){
+            display.textContent += ".";
+        }
+    } else if (target.classList.contains("num")) {
         if (waitingNum2) {
             display.textContent = "";
             waitingNum2 = false;
@@ -108,7 +116,15 @@ calculator.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
     let key = event.key;
-    if (!isNaN(key) || key === '.') {
+    if (key === '.') {
+        if (waitingNum2 || resultShown || display.textContent === "0") {
+            display.textContent = "0.";
+            waitingNum2 = false;
+            resultShown = false;
+        } else if (!display.textContent.includes(".")) {
+            display.textContent += ".";
+        }
+    } else if (!isNaN(key)) {
         if (waitingNum2 || resultShown) {
             display.textContent = "";
             waitingNum2 = false;
@@ -126,6 +142,7 @@ document.addEventListener("keydown", (event) => {
             waitingNum2 = true;
         }
     } else if (key === "Enter") {
+        event.preventDefault();
         num2 = display.textContent;
         let result = calc(num1, num2, opp);
         if (result.toString().includes('.')) {
@@ -142,15 +159,14 @@ document.addEventListener("keydown", (event) => {
         } else {
             display.textContent = display.textContent.slice(0, -1);
         }
-    } 
-    else if (key === "Escape"){
+    } else if (key === "Escape") {
         display.textContent = "0";
         num1 = null;
         num2 = null;
         opp = null;
         waitingNum2 = false;
         resultShown = false;
-    } 
+    }
 
 
 });
