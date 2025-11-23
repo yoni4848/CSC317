@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict sh2eEhzA3xwRTUWdON0NsluTGsAo5uVeAEDveMucklRZSqdfeC3JBN4Ocn3zLBN
+\restrict unWbDElzrJllcY6jxAJd2gnf3TGPYrYAmWqovYxfil7J9cgNKDmenaRCg9CQoac
 
 -- Dumped from database version 16.11 (Homebrew)
 -- Dumped by pg_dump version 16.11 (Homebrew)
@@ -28,8 +28,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.comments (
     comment_id integer NOT NULL,
-    user_id integer NOT NULL,
     post_id integer NOT NULL,
+    user_id integer NOT NULL,
     content character varying(280) NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
@@ -64,8 +64,8 @@ ALTER SEQUENCE public.comments_comment_id_seq OWNED BY public.comments.comment_i
 --
 
 CREATE TABLE public.follows (
-    following_id integer NOT NULL,
     follower_id integer NOT NULL,
+    following_id integer NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -77,8 +77,8 @@ ALTER TABLE public.follows OWNER TO yonasmelkie;
 --
 
 CREATE TABLE public.likes (
-    post_id integer NOT NULL,
     user_id integer NOT NULL,
+    post_id integer NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -127,10 +127,12 @@ ALTER SEQUENCE public.posts_post_id_seq OWNED BY public.posts.post_id;
 
 CREATE TABLE public.users (
     user_id integer NOT NULL,
-    user_name character varying(50) NOT NULL,
+    username character varying(50) NOT NULL,
     email character varying(100) NOT NULL,
+    password_hash character varying(255) NOT NULL,
     age integer,
     bio text,
+    profile_picture character varying(255),
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT users_age_check CHECK ((age >= 13))
 );
@@ -190,11 +192,11 @@ ALTER TABLE ONLY public.comments
 
 
 --
--- Name: follows followers_pkey; Type: CONSTRAINT; Schema: public; Owner: yonasmelkie
+-- Name: follows follows_pkey; Type: CONSTRAINT; Schema: public; Owner: yonasmelkie
 --
 
 ALTER TABLE ONLY public.follows
-    ADD CONSTRAINT followers_pkey PRIMARY KEY (follower_id, following_id);
+    ADD CONSTRAINT follows_pkey PRIMARY KEY (follower_id, following_id);
 
 
 --
@@ -230,11 +232,11 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: users users_user_name_key; Type: CONSTRAINT; Schema: public; Owner: yonasmelkie
+-- Name: users users_username_key; Type: CONSTRAINT; Schema: public; Owner: yonasmelkie
 --
 
 ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_user_name_key UNIQUE (user_name);
+    ADD CONSTRAINT users_username_key UNIQUE (username);
 
 
 --
@@ -254,19 +256,19 @@ ALTER TABLE ONLY public.comments
 
 
 --
--- Name: follows followers_follower_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: yonasmelkie
+-- Name: follows follows_follower_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: yonasmelkie
 --
 
 ALTER TABLE ONLY public.follows
-    ADD CONSTRAINT followers_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+    ADD CONSTRAINT follows_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --
--- Name: follows followers_following_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: yonasmelkie
+-- Name: follows follows_following_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: yonasmelkie
 --
 
 ALTER TABLE ONLY public.follows
-    ADD CONSTRAINT followers_following_id_fkey FOREIGN KEY (following_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
+    ADD CONSTRAINT follows_following_id_fkey FOREIGN KEY (following_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
 
 
 --
@@ -297,5 +299,5 @@ ALTER TABLE ONLY public.posts
 -- PostgreSQL database dump complete
 --
 
-\unrestrict sh2eEhzA3xwRTUWdON0NsluTGsAo5uVeAEDveMucklRZSqdfeC3JBN4Ocn3zLBN
+\unrestrict unWbDElzrJllcY6jxAJd2gnf3TGPYrYAmWqovYxfil7J9cgNKDmenaRCg9CQoac
 
