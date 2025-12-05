@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const db = require('./database/db')
 const app = express();
@@ -8,6 +9,19 @@ app.use(express.json());
 const PORT = 3000;
 
 
+// Import routes
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+const postRoutes = require('./routes/posts');
+const commentRoutes = require('./routes/comments');
+const followRoutes = require('./routes/follows');
+
+// Mount routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/users', followRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/comments', commentRoutes);
 
 app.get('/api/health', (req, res) => {
     res.json({
