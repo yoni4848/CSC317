@@ -17,4 +17,20 @@ const { authenticateToken } = require('../middlewares/auth');
       }
   });
 
+  //mark all notifcations of a user as seen
+router.put('/read', authenticateToken, async (req, res) => {
+    try {
+        await db.query(
+            'UPDATE notifications SET is_read = TRUE WHERE user_id = $1',
+            [req.user_id]
+        );
+        res.status(200).json({message: 'all notifications marked as read'});
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({error: 'database error'});
+    }
+});
+
+module.exports = router;
+
 
