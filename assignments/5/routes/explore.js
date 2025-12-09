@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 
+//endpoint for getting all users post ordered by like count
 router.get('/', async (req, res) => {
     try{
         const result = await db.query(

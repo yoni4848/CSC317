@@ -4,6 +4,9 @@ const router = express.Router();
 const db = require('../database/db');
 const { authenticateToken } = require('../middlewares/auth');
 
+
+
+//get posts of user accounts follow
 router.get('/', authenticateToken, async (req, res) => {
     try{
         const result = await db.query(
