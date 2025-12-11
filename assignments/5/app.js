@@ -4,6 +4,7 @@ const db = require('./database/db')
 const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
+app.use(express.static('public'));
 
 
 const PORT = 3001;
