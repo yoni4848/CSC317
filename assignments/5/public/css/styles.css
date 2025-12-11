@@ -27,3 +27,27 @@ body {
     top: 0;
     height: 100vh;
 }
+
+.Xlogo{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+nav a:hover{
+    background-color: #1a1a1a;
+}
