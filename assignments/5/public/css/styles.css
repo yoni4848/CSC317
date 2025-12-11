@@ -173,3 +173,85 @@ textarea{
     background-color: #1a8cd8;
 }
 
+.userPost{
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-bottom: 1px solid #2f3336;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.userPost:hover{
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.userPost img{
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+}
+
+.postContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.posterInfo{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.posterInfo span:first-child{
+    font-weight: bold;
+}
+
+.posterInfo span:nth-child(2){
+    color: #71767b;
+}
+
+.posterInfo span:nth-child(3){
+    color: #71767b;
+}
+
+.actionButtons{
+    display: flex;
+    gap: 50px;
+    margin-top: 10px;
+}
+
+.actionButtons button{
+    background-color: transparent;
+    border: none;
+    color: #71767b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.actionButtons button:nth-child(1):hover{
+    color: #1d9bf0;
+    background-color: rgba(29, 155, 240, 0.1);
+}
+
+.actionButtons button:nth-child(2):hover{
+    color: #00ba7c;
+    background-color: rgba(0, 186, 124, 0.1);
+}
+
+.actionButtons button:nth-child(3):hover{
+    color: #f91880;
+    background-color: rgba(249, 24, 128, 0.1);
+}
+
+.actionButtons button:nth-child(4):hover{
+    color: #1d9bf0;
+    background-color: rgba(29, 155, 240, 0.1);
+}
