@@ -96,3 +96,8 @@ nav a:hover{
     color: #71767b;
     font-size: 14px;
 }
+
+.centerColumn{
+    border-left: 1px solid #2f3336;
+    border-right: 1px solid #2f3336;
+}
