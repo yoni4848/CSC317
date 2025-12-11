@@ -101,3 +101,75 @@ nav a:hover{
     border-left: 1px solid #2f3336;
     border-right: 1px solid #2f3336;
 }
+
+.postCreation{
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-bottom: 1px solid #2f3336;
+}
+
+.postCreation img{
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+}
+
+.inputWrapper{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+textarea{
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+}
+
+.userActions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftside{
+    display: flex;
+    gap: 5px;
+}
+
+.leftside button{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    color: #1d9bf0;
+}
+
+.leftside button:hover{
+    background-color: rgba(29, 155, 240, 0.1);
+}
+
+.userActions button{
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.userActions button:hover{
+    background-color: #1a8cd8;
+}
+
