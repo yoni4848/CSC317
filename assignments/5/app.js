@@ -40,7 +40,7 @@ app.get('/api/health', (req, res) => {
 
 app.get('/api/info', (req, res) => {
     res.json({
-        project: 'Twitter clone',
+        project: 'Chirp',
         version: 1.0
     });
 });
