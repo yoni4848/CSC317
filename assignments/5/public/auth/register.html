@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Chirp – Create Account</title>
-  <link rel="stylesheet" href="../css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chirp - join</title>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
-
 <body>
-  <main class="page">
-    <section class="card">
-      <div class="brand">CHIRP</div>
+    <div class="auth">
+        <div class="auth-container">
+            <div class="auth-logo">chirp</div>
 
-      <h1 style="font-size: 2rem; margin-bottom: 0.75rem;">Join Chirp</h1>
-      <p style="margin-bottom: 2rem; color: #737373;">Create your account to start sharing thoughts.</p>
+            <h1 class="auth-title">Join chirp</h1>
+            <p class="auth-subtitle">Share your thoughts with the world</p>
 
-      <form id="registerForm">
-        <div class="field">
-          <div class="field-label">Username</div>
-          <input class="input" type="text" name="username" placeholder="choose a username" required />
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" name="username" placeholder="choose a username" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" name="password" placeholder="create a password" required>
+                </div>
+
+                <div id="error-message" class="error-message"></div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <p class="auth-footer">
+                Already have an account? <a href="login.html">Sign in</a>
+            </p>
         </div>
+    </div>
 
-        <div class="field">
-          <div class="field-label">Email</div>
-          <input class="input" type="email" name="email" placeholder="your@email.com" required />
-        </div>
-
-        <div class="field">
-          <div class="field-label">Password</div>
-          <input class="input" type="password" name="password" placeholder="create a password" required />
-        </div>
-
-        <div id="error-message" style="color: #e0245e; margin-bottom: 1rem; display: none;"></div>
-
-        <button type="submit" class="button">Create Account</button>
-      </form>
-
-  <script src="../js/register.js"></script>
-
-      <div class="subtext">
-        Already have an account?
-        <a href="/auth/login.html">Sign in</a>
-      </div>
-    </section>
-  </main>
+    <script src="../js/register.js"></script>
 </body>
 </html>

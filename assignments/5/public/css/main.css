@@ -1,105 +1,152 @@
-   GLOBAL RESET + BASE STYLING
- {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: #f5f8fa;
-  color: #14171a;
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    background: #fafafa;
+    color: #111111;
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
-
-   GENERAL PAGE LAYOUT
-.page {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+.auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-
-   AUTH CARD (Login / Register)
-.card {
-  background: #ffffff;
-  width: 100%;
-  max-width: 420px;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+.auth-container {
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
 }
 
-.brand {
-  font-size: 2.2rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #1d9bf0;
-  letter-spacing: 1px;
+.auth-logo {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #111111, #333333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 60px;
 }
 
-
-   FORM FIELDS
-.field {
-  margin-bottom: 1.2rem;
+.auth-title {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 8px;
 }
 
-.field-label {
-  margin-bottom: 0.35rem;
-  font-size: 0.9rem;
-  color: #555;
+.auth-subtitle {
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 48px;
 }
 
-.input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid #d3d3d3;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: #fefefe;
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.input:focus {
-  outline: none;
-  border-color: #1d9bf0;
-  box-shadow: 0 0 0 2px rgba(29,155,240,0.2);
+.form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888888;
+    margin-bottom: 8px;
 }
 
-
-   BUTTON
-.button {
-  width: 100%;
-  padding: 0.9rem;
-  background: #1d9bf0;
-  color: #fff;
-  border: none;
-  font-size: 1.05rem;
-  border-radius: 25px;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.25s;
+.form-input {
+    width: 100%;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #111111;
+    transition: all 0.3s ease;
 }
 
-.button:hover {
-  background: #198cd6;
+.form-input::placeholder {
+    color: #888888;
 }
 
-   SUBTEXT (Links Under Form)
-.subtext {
-  text-align: center;
-  margin-top: 1.3rem;
-  font-size: 0.9rem;
-  color: #444;
+.form-input:focus {
+    outline: none;
+    border-color: #111111;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
-.subtext a {
-  color: #1d9bf0;
-  text-decoration: none;
+.error-message {
+    color: #e0245e;
+    font-size: 14px;
+    margin-bottom: 16px;
+    display: none;
 }
 
-.subtext a:hover {
-  text-decoration: underline;
+.auth-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #111111, #333333);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 12px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 32px 0;
+    font-size: 11px;
+    color: #888888;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.auth-footer {
+    font-size: 14px;
+    color: #888888;
+}
+
+.auth-footer a {
+    color: #111111;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
 }
