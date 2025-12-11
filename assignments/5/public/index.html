@@ -1,194 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Chirp</title>
-  </head>
-  <body>
+</head>
+<body>
+    
+    <!-- Header with logo and window controls -->
+    <header class="header">
+        <div class="window-controls">
+            <span class="control green"></span>
+            <span class="control gray"></span>
+            <span class="control red"></span>
+        </div>
+        <h1 class="logo">CHIRP</h1>
+    </header>
+
+    <!-- Main container - centered -->
     <div class="main">
-      <aside class="leftsideBar">
-        <div class="Xlogo"><i class="fa-brands fa-x-twitter"></i></div>
-
-        <nav>
-          <a href="#"><i class="fa-solid fa-house"></i> Home</a>
-          <a href="#"><i class="fa-solid fa-magnifying-glass"></i> Explore</a>
-          <a href="#"><i class="fa-solid fa-user"></i> Profile</a>
-          <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
-        </nav>
-
-        <button>Post</button>
-
-        <div class="profile">
-          <img src="https://via.placeholder.com/48" alt="profile picture" />
-          <div class="profileInfo">
-            <p class="profileName">Adarsha Bomjan</p>
-            <p class="profileHandle">@abomjan</p>
-          </div>
-        </div>
-      </aside>
-
-      <main class="centerColumn">
+        
+        <!-- Compose section -->
         <div class="postCreation">
-          <img
-            src="https://via.placeholder.com/48"
-            alt="profile picture"
-            id="user1PFP"
-          />
-          <div class="inputWrapper">
-            <textarea placeholder="What's happening?" rows="3"></textarea>
+            <textarea placeholder="What's on your mind?" rows="3"></textarea>
             <div class="userActions">
-              <div class="leftside">
-                <button><i class="fa-regular fa-image"></i></button>
-                <button><i class="fa-regular fa-face-smile"></i></button>
-                <button><i class="fa-solid fa-chart-column"></i></button>
-                <button><i class="fa-regular fa-calendar"></i></button>
-              </div>
-
-              <button>Post</button>
+                <div class="leftside">
+                    <button><i class="fa-regular fa-image"></i></button>
+                    <button><i class="fa-regular fa-face-smile"></i></button>
+                </div>
+                <div class="compose-meta">
+                    <span class="char-count">280</span>
+                    <button>Share</button>
+                </div>
             </div>
-          </div>
         </div>
 
+        <!-- Posts feed -->
         <div class="userFeed">
-          <article class="userPost">
-            <img
-              src="https://via.placeholder.com/48"
-              alt="profile picture"
-              id="user1PFP"
-            />
-
-            <div class="postContent">
-              <div class="posterInfo">
-                <span>Adarsha Bomjan</span>
-                <span>@abom</span>
-                <span>· Dec 7</span>
-              </div>
-              <p>
-                This is my first post on our X clone project. Please look
-                through our web app and provide us a handful feedback. We
-                appreciate your help. Thank you from our Group.
-              </p>
-
-              <div class="actionButtons">
-                <div class="actionButtons">
-                  <button>
-                    <span><i class="fa-regular fa-comment"></i></span>
-                    <span>2</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-solid fa-retweet"></i></span>
-                    <span>1</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-regular fa-heart"></i></span>
-                    <span>5</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-regular fa-bookmark"></i></span>
-                  </button>
+            
+            <!-- Post 1 -->
+            <article class="userPost">
+                <div class="postContent">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <div class="avatar">S</div>
+                            <div class="profileInfo">
+                                <span class="profileName">Sarah</span>
+                                <span class="profileHandle">@sarah</span>
+                            </div>
+                        </div>
+                        <span class="post-time">2H</span>
+                    </div>
+                    <p>
+                        Just launched my new project after months of work. So excited to share it with everyone. Check it out and let me know what you think!
+                    </p>
+                    <div class="actionButtons">
+                        <button><span><i class="fa-regular fa-comment"></i></span> <span>24</span></button>
+                        <button><span><i class="fa-solid fa-heart"></i></span> <span>156</span></button>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="userPost">
-            <img
-              src="https://via.placeholder.com/48"
-              alt="profile picture"
-              id="user2PFP"
-            />
-
-            <div class="postContent">
-              <div class="posterInfo">
-                <span>Yonas Melkie</span>
-                <span>@ymellie</span>
-                <span>· Nov 22</span>
-              </div>
-              <p>Ronaldo is the GOAT. There is no debate.</p>
-
-              <div class="actionButtons">
-                <div class="actionButtons">
-                  <button>
-                    <span><i class="fa-regular fa-comment"></i></span>
-                    <span>22</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-solid fa-retweet"></i></span>
-                    <span>66</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-regular fa-heart"></i></span>
-                    <span>1</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-regular fa-bookmark"></i></span>
-                  </button>
+            <!-- Post 2 -->
+            <article class="userPost">
+                <div class="postContent">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <div class="avatar">M</div>
+                            <div class="profileInfo">
+                                <span class="profileName">Mike</span>
+                                <span class="profileHandle">@mike</span>
+                            </div>
+                        </div>
+                        <span class="post-time">4H</span>
+                    </div>
+                    <p>
+                        The best code is the code you don't have to write. Keep it simple and elegant.
+                    </p>
+                    <div class="actionButtons">
+                        <button><span><i class="fa-regular fa-comment"></i></span> <span>12</span></button>
+                        <button><span><i class="fa-solid fa-heart"></i></span> <span>89</span></button>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </article>
+            </article>
 
-          <article class="userPost">
-            <img
-              src="https://via.placeholder.com/48"
-              alt="profile picture"
-              id="user3PFP"
-            />
-
-            <div class="postContent">
-              <div class="posterInfo">
-                <span>Lionel Messi</span>
-                <span>@Leomessi</span>
-                <span>· Dec 3</span>
-              </div>
-              <p>I agree with what Yonas tweeted. I give up on GOAT debate.</p>
-
-              <div class="actionButtons">
-                <div class="actionButtons">
-                  <button>
-                    <span><i class="fa-regular fa-comment"></i></span>
-                    <span>100K</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-solid fa-retweet"></i></span>
-                    <span>530K</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-regular fa-heart"></i></span>
-                    <span>1M</span>
-                  </button>
-                  <button>
-                    <span><i class="fa-regular fa-bookmark"></i></span>
-                  </button>
+            <!-- Post 3 -->
+            <article class="userPost">
+                <div class="postContent">
+                    <div class="post-header">
+                        <div class="post-author">
+                            <div class="avatar">A</div>
+                            <div class="profileInfo">
+                                <span class="profileName">Adarsha</span>
+                                <span class="profileHandle">@abomjan</span>
+                            </div>
+                        </div>
+                        <span class="post-time">6H</span>
+                    </div>
+                    <p>
+                        Working on this X clone project. Learning so much about web development!
+                    </p>
+                    <div class="actionButtons">
+                        <button><span><i class="fa-regular fa-comment"></i></span> <span>5</span></button>
+                        <button><span><i class="fa-solid fa-heart"></i></span> <span>23</span></button>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </article>
+            </article>
+
         </div>
-      </main>
-      <div class="rightsideBar">
-        <input type="search" placeholder="Search" />
-        <div class="trends">
-          <h2>Trending</h2>
-          <div class="trend">
-            <p>Trending in Sports</p>
-            <p>#WDC25</p>
-            <p>130K Posts</p>
-          </div>
-          <div class="trend">
-            <p>Trending in Nature</p>
-            <p>#STT</p>
-            <p>170K Posts</p>
-          </div>
-          <a href="#">Show more</a>
-        </div>
-      </div>
     </div>
-  </body>
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active"><i class="fa-solid fa-house"></i></button>
+        <button class="nav-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="nav-btn add-btn"><i class="fa-solid fa-plus"></i></button>
+        <button class="nav-btn"><i class="fa-solid fa-bell"></i></button>
+        <button class="nav-btn"><i class="fa-solid fa-user"></i></button>
+    </nav>
+
+</body>
 </html>

@@ -255,3 +255,77 @@ textarea{
     color: #1d9bf0;
     background-color: rgba(29, 155, 240, 0.1);
 }
+
+.rightsideBar{
+    padding: 10px;
+}
+
+.rightsideBar input[type="search"]{
+    width: 100%;
+    background-color: #202327;
+    border: 1px solid #2f3336;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 25px;
+    font-size: 15px;
+    outline: none;
+}
+
+.rightsideBar input[type="search"]:focus{
+    border-color: #1d9bf0;
+    background-color: black;
+}
+
+.trends{
+    background-color: #16181c;
+    border-radius: 15px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.trends h2{
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.trend{
+    padding: 12px 15px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.trend:hover{
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.trend p{
+    margin: 2px 0;
+}
+
+.trend p:first-child{
+    font-size: 13px;
+    color: #71767b;
+}
+
+.trend p:nth-child(2){
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.trend p:nth-child(3){
+    font-size: 13px;
+    color: #71767b;
+}
+
+.trends a{
+    display: block;
+    padding: 15px;
+    color: #1d9bf0;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.trends a:hover{
+    background-color: rgba(255, 255, 255, 0.03);
+}
