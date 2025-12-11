@@ -74,3 +74,60 @@ body {
   margin-top: 20px;
   font-size: 0.9rem;
 }
+
+.card {
+  animation: slideUp 0.45s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand {
+  color: #1d9bf0;
+  font-weight: 900;
+  text-shadow: 0 1px 4px rgba(29,155,240,0.18);
+}
+
+.card h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 1.8rem;
+}
+
+.field-label::after {
+  content: " *";
+  color: #e63946;
+}
+
+.input:hover {
+  background: #fafafa;
+}
+
+.button {
+  background: #1a8cd8;
+}
+
+.button:hover {
+  background: #187dc0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(26,140,216,0.25);
+}
+
+.subtext {
+  margin-top: 1.6rem;
+}
+

@@ -1,0 +1,105 @@
+   GLOBAL RESET + BASE STYLING
+ {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f5f8fa;
+  color: #14171a;
+}
+
+
+   GENERAL PAGE LAYOUT
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+
+   AUTH CARD (Login / Register)
+.card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.brand {
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1d9bf0;
+  letter-spacing: 1px;
+}
+
+
+   FORM FIELDS
+.field {
+  margin-bottom: 1.2rem;
+}
+
+.field-label {
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fefefe;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1d9bf0;
+  box-shadow: 0 0 0 2px rgba(29,155,240,0.2);
+}
+
+
+   BUTTON
+.button {
+  width: 100%;
+  padding: 0.9rem;
+  background: #1d9bf0;
+  color: #fff;
+  border: none;
+  font-size: 1.05rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.25s;
+}
+
+.button:hover {
+  background: #198cd6;
+}
+
+   SUBTEXT (Links Under Form)
+.subtext {
+  text-align: center;
+  margin-top: 1.3rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.subtext a {
+  color: #1d9bf0;
+  text-decoration: none;
+}
+
+.subtext a:hover {
+  text-decoration: underline;
+}
