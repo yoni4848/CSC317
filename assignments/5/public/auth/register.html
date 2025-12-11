@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chirp – Create Account</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="brand">CHIRP</div>
+
+      <h1 style="font-size: 2rem; margin-bottom: 0.75rem;">Join Chirp</h1>
+      <p style="margin-bottom: 2rem; color: #737373;">Create your account to start sharing thoughts.</p>
+
+      <form id="registerForm">
+        <div class="field">
+          <div class="field-label">Username</div>
+          <input class="input" type="text" name="username" placeholder="choose a username" required />
+        </div>
+
+        <div class="field">
+          <div class="field-label">Email</div>
+          <input class="input" type="email" name="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="field">
+          <div class="field-label">Password</div>
+          <input class="input" type="password" name="password" placeholder="create a password" required />
+        </div>
+
+        <button type="submit" class="button">Create Account</button>
+      </form>
+
+      <div class="subtext">
+        Already have an account?
+        <a href="/auth/login.html">Sign in</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
