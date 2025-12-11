@@ -68,3 +68,31 @@ nav a:hover{
 .leftsideBar button:hover{
     background-color: #e6e6e6;
 }
+
+.profile{
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 25px;
+
+}.profile:hover{
+    background-color: #1a1a1a;
+}
+
+.profile img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.profileName{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.profileHandle{
+    color: #71767b;
+    font-size: 14px;
+}
