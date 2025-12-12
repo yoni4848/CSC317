@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const usersListContent = document.getElementById('usersListContent');
     const closeListBtn = document.getElementById('closeListBtn');
     const userPosts = document.getElementById('userPosts');
+    const editProfileBtn = document.getElementById('editProfileBtn');
+    const editProfileForm = document.getElementById('editProfileForm');
+    const bioInput = document.getElementById('bioInput');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+    const saveEditBtn = document.getElementById('saveEditBtn');
 
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -66,6 +71,51 @@ document.addEventListener('DOMContentLoaded', () => {
     closeListBtn.addEventListener('click', () => {
         usersList.style.display = 'none';
     });
+
+    // edit profile
+    if (editProfileBtn) {
+        editProfileBtn.addEventListener('click', () => {
+            editProfileBtn.style.display = 'none';
+            editProfileForm.style.display = 'block';
+            bioInput.value = profileBio.textContent || '';
+            bioInput.focus();
+        });
+    }
+
+    if (cancelEditBtn) {
+        cancelEditBtn.addEventListener('click', () => {
+            editProfileForm.style.display = 'none';
+            editProfileBtn.style.display = 'block';
+        });
+    }
+
+    if (saveEditBtn) {
+        saveEditBtn.addEventListener('click', async () => {
+            const bio = bioInput.value.trim();
+
+            try {
+                const res = await fetch(`/api/users/${userData.user_id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ bio })
+                });
+
+                if (!res.ok) {
+                    alert('Failed to update profile');
+                    return;
+                }
+
+                profileBio.textContent = bio;
+                editProfileForm.style.display = 'none';
+                editProfileBtn.style.display = 'block';
+            } catch (err) {
+                alert('Something went wrong');
+            }
+        });
+    }
 
     // show following list
     followingBtn.addEventListener('click', () => {
@@ -138,6 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     followBtn.textContent = 'Following';
                     followBtn.classList.add('following');
                 }
+            }
+
+            // show edit button on own profile
+            if (isOwnProfile && token) {
+                editProfileBtn.style.display = 'block';
             }
 
             loadUserPosts(userId, userInfo.username);

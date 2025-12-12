@@ -60,7 +60,82 @@
     font-size: 14px;
     color: #333;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+}
+
+.edit-profile-btn {
+    padding: 8px 20px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 16px;
+}
+
+.edit-profile-btn:hover {
+    border-color: #333;
+}
+
+.edit-profile-form {
+    margin-bottom: 16px;
+}
+
+.edit-profile-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.edit-profile-form textarea:focus {
+    border-color: #333;
+}
+
+.edit-profile-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.cancel-edit-btn {
+    padding: 8px 16px;
+    background-color: white;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cancel-edit-btn:hover {
+    border-color: #333;
+    color: #333;
+}
+
+.save-edit-btn {
+    padding: 8px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-edit-btn:hover {
+    background-color: #555;
 }
 
 .profile-stats {
