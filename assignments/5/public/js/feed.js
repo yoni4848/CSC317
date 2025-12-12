@@ -1,10 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
     const feed = document.querySelector('.userFeed');
     const tabs = document.querySelectorAll('.feed-tab');
+    const textarea = document.querySelector('.postCreation textarea');
+    const shareBtn = document.querySelector('.compose-meta button');
+    const charCount = document.querySelector('.char-count');
     let currentTab = 'explore';
 
     // load explore on page load
     loadExplore();
+
+    // character count
+    if (textarea && charCount) {
+        textarea.addEventListener('input', () => {
+            const remaining = 280 - textarea.value.length;
+            charCount.textContent = remaining;
+            charCount.style.color = remaining < 0 ? '#ff3b30' : remaining < 20 ? '#ff9500' : '#999';
+        });
+    }
+
+    // share button
+    if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                window.location.href = '/auth/login.html';
+                return;
+            }
+
+            const content = textarea.value.trim();
+            if (!content) return;
+            if (content.length > 280) return;
+
+            try {
+                const res = await fetch('/api/posts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ content })
+                });
+
+                if (!res.ok) {
+                    const data = await res.json();
+                    alert(data.error || 'Failed to post');
+                    return;
+                }
+
+                textarea.value = '';
+                charCount.textContent = '280';
+                loadExplore();
+
+            } catch (err) {
+                alert('Something went wrong');
+            }
+        });
+    }
 
     // tab click handlers
     tabs.forEach(tab => {
