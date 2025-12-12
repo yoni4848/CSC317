@@ -145,6 +145,50 @@ textarea::placeholder {
   background-color: #555;
 }
 
+.feed-tabs {
+  display: flex;
+  background-color: white;
+  border-radius: 12px;
+  padding: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feed-tab {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.feed-tab:hover {
+  color: #333;
+}
+
+.feed-tab.active {
+  background-color: #333;
+  color: white;
+}
+
+.feed-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 15px;
+}
+
+.feed-message a {
+  color: #333;
+  font-weight: 500;
+}
+
 .userFeed {
   display: flex;
   flex-direction: column;
