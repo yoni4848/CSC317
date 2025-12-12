@@ -68,6 +68,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // emoji picker
+    const emojiBtn = document.querySelector('.emoji-btn');
+    const emojiPicker = document.querySelector('.emoji-picker');
+    const emojis = ['😀', '😂', '😍', '🥰', '😎', '🤔', '😢', '😡', '👍', '👎', '❤️', '🔥', '✨', '🎉', '💯', '🙏', '👀', '🤣', '😊', '🥺', '😭', '😤', '🤯', '💀'];
+
+    if (emojiBtn && emojiPicker) {
+        emojiPicker.innerHTML = emojis.map(e => `<span>${e}</span>`).join('');
+
+        emojiBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'grid' : 'none';
+        });
+
+        emojiPicker.addEventListener('click', (e) => {
+            if (e.target.tagName === 'SPAN') {
+                textarea.value += e.target.textContent;
+                textarea.focus();
+                const remaining = 280 - textarea.value.length;
+                charCount.textContent = remaining;
+                charCount.style.color = remaining < 0 ? '#ff3b30' : remaining < 20 ? '#ff9500' : '#999';
+            }
+        });
+
+        document.addEventListener('click', () => {
+            emojiPicker.style.display = 'none';
+        });
+    }
+
     // share button
     if (shareBtn) {
         shareBtn.addEventListener('click', async () => {

@@ -157,6 +157,39 @@ textarea::placeholder {
   color: #333;
 }
 
+.leftside {
+  position: relative;
+}
+
+.emoji-picker {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+  max-width: 280px;
+  z-index: 10;
+}
+
+.emoji-picker span {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.emoji-picker span:hover {
+  background-color: #f0f0f0;
+}
+
 .compose-meta {
   display: flex;
   align-items: center;
