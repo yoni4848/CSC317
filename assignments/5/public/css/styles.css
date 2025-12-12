@@ -42,6 +42,19 @@ body {
   gap: 12px;
 }
 
+.back-link {
+  color: #333;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.back-link:hover {
+  background-color: #f0f0f0;
+}
+
 .login-btn {
   text-decoration: none;
   color: #333;

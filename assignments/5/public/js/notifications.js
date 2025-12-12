@@ -78,13 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         text = `<strong>${n.username}</strong> liked your post`;
                         iconClass = 'like';
                         iconSymbol = '<i class="fa-solid fa-heart"></i>';
-                        link = `/user/profile.html?id=${JSON.parse(user).user_id}`;
+                        link = `/post.html?id=${n.post_id}`;
                         break;
                     case 'comment':
                         text = `<strong>${n.username}</strong> commented on your post`;
                         iconClass = 'comment';
                         iconSymbol = '<i class="fa-solid fa-comment"></i>';
-                        link = `/user/profile.html?id=${JSON.parse(user).user_id}`;
+                        link = `/post.html?id=${n.post_id}`;
                         break;
                     case 'follow':
                         text = `<strong>${n.username}</strong> started following you`;

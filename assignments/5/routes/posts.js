@@ -48,7 +48,7 @@ router.get ('/:id', async (req, res) => {
         const { id } = req.params;
 
         const result = await db.query(
-            'SELECT * FROM posts WHERE post_id = $1', [id]
+            'SELECT posts.*, users.username FROM posts JOIN users ON posts.user_id = users.user_id WHERE post_id = $1', [id]
         );
 
         if (result.rows.length === 0){
