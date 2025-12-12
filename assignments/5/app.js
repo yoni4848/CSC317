@@ -4,6 +4,7 @@ const db = require('./database/db')
 const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
+app.use(express.static('public'));
 
 
 const PORT = 3001;
@@ -39,7 +40,7 @@ app.get('/api/health', (req, res) => {
 
 app.get('/api/info', (req, res) => {
     res.json({
-        project: 'Twitter clone',
+        project: 'Chirp',
         version: 1.0
     });
 });

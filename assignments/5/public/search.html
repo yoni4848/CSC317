@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/search.css">
+    <title>Chirp - Search</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="logo">SEARCH</h1>
+            <div class="header-right">
+                <a href="auth/login.html" class="login-btn" id="loginBtn">Login</a>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span class="username" id="username"></span>
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search posts or users...">
+        </div>
+
+        <div class="search-tabs">
+            <button class="search-tab active" data-tab="posts">Posts</button>
+            <button class="search-tab" data-tab="users">Users</button>
+        </div>
+
+        <div class="search-results" id="searchResults">
+            <p class="search-message">Enter a keyword to search</p>
+        </div>
+    </div>
+
+    <nav class="bottomNav">
+        <div class="bottomNav-inner">
+            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i></a>
+            <a href="search.html" class="nav-btn active"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <button class="nav-btn add-btn"><i class="fa-solid fa-plus"></i></button>
+            <div class="nav-btn-wrapper">
+                <a href="notifications.html" class="nav-btn"><i class="fa-solid fa-bell"></i></a>
+                <span class="notification-badge" id="notificationBadge" style="display: none;"></span>
+            </div>
+            <a href="user/profile.html" class="nav-btn"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </nav>
+
+    <script src="js/search.js"></script>
+</body>
+</html>

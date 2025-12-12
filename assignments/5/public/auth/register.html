@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chirp - join</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="auth">
+        <div class="auth-container">
+            <div class="auth-logo">chirp</div>
+
+            <h1 class="auth-title">Join chirp</h1>
+            <p class="auth-subtitle">Share your thoughts with the world</p>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-input" name="username" placeholder="choose a username" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" name="password" placeholder="create a password" required>
+                </div>
+
+                <div id="error-message" class="error-message"></div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <p class="auth-footer">
+                Already have an account? <a href="login.html">Sign in</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="../js/register.js"></script>
+</body>
+</html>

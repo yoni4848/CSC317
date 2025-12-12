@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <title>Chirp - Profile</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i></a>
+            <h1 class="logo">PROFILE</h1>
+            <div class="header-right">
+                <a href="../auth/login.html" class="login-btn" id="loginBtn">Login</a>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">?</div>
+                <div class="profile-info">
+                    <h2 class="profile-name" id="profileName">Loading...</h2>
+                    <p class="profile-handle" id="profileHandle">@...</p>
+                </div>
+                <button class="follow-btn" id="followBtn" style="display: none;">Follow</button>
+            </div>
+
+            <p class="profile-bio" id="profileBio"></p>
+            <button class="edit-profile-btn" id="editProfileBtn" style="display: none;">Edit Profile</button>
+
+            <div class="edit-profile-form" id="editProfileForm" style="display: none;">
+                <textarea id="bioInput" placeholder="Write something about yourself..." rows="3"></textarea>
+                <div class="edit-profile-actions">
+                    <button class="cancel-edit-btn" id="cancelEditBtn">Cancel</button>
+                    <button class="save-edit-btn" id="saveEditBtn">Save</button>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <button class="stat stat-btn" id="followingBtn">
+                    <span class="stat-number" id="followingCount">0</span>
+                    <span class="stat-label">Following</span>
+                </button>
+                <button class="stat stat-btn" id="followersBtn">
+                    <span class="stat-number" id="followersCount">0</span>
+                    <span class="stat-label">Followers</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="users-list" id="usersList" style="display: none;">
+            <div class="users-list-header">
+                <h3 id="usersListTitle">Following</h3>
+                <button class="close-btn" id="closeListBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="users-list-content" id="usersListContent"></div>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="profile-tab active">Posts</button>
+        </div>
+
+        <div class="userFeed" id="userPosts"></div>
+    </div>
+
+    <nav class="bottomNav">
+        <div class="bottomNav-inner">
+            <a href="../index.html" class="nav-btn"><i class="fa-solid fa-house"></i></a>
+            <a href="../search.html" class="nav-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <button class="nav-btn add-btn"><i class="fa-solid fa-plus"></i></button>
+            <div class="nav-btn-wrapper">
+                <a href="../notifications.html" class="nav-btn"><i class="fa-solid fa-bell"></i></a>
+                <span class="notification-badge" id="notificationBadge" style="display: none;"></span>
+            </div>
+            <a href="profile.html" class="nav-btn active"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </nav>
+
+    <script src="../js/profile.js"></script>
+</body>
+</html>
