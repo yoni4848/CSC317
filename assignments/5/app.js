@@ -4,6 +4,7 @@ const db = require('./database/db')
 const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
+const{notFound, errorHandler} = require('./middlewares/errorHandlers');
 
 
 const PORT = 3001;
@@ -43,7 +44,14 @@ app.get('/api/info', (req, res) => {
         version: 1.0
     });
 });
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
+
+
+module.exports = app;
