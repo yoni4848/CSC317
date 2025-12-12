@@ -332,6 +332,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch(`/api/posts/${postId}/comments`);
             const comments = await res.json();
 
+            if (!res.ok || !Array.isArray(comments)) {
+                list.innerHTML = '<p class="no-comments">No comments yet</p>';
+                return;
+            }
+
             if (comments.length === 0) {
                 list.innerHTML = '<p class="no-comments">No comments yet</p>';
                 return;
