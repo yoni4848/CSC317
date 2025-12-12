@@ -258,7 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             </a>
                             <span class="post-time">${timeAgo}</span>
                         </div>
-                        <p>${post.content}</p>
+                        <a href="/post.html?id=${post.post_id}" class="post-body-link">
+                            <p>${post.content}</p>
+                        </a>
                         <div class="actionButtons">
                             <button class="comment-btn" data-postid="${post.post_id}"><span><i class="fa-regular fa-comment"></i></span> <span class="comment-count">${commentCount}</span></button>
                             <button class="like-btn ${likedClass}" data-postid="${post.post_id}"><span><i class="${heartClass} fa-heart"></i></span> <span class="like-count">${likeCount}</span></button>

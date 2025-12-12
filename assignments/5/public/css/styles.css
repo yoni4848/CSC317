@@ -363,10 +363,20 @@ textarea::placeholder {
   background-color: #ffe5e5;
 }
 
+.post-body-link {
+  text-decoration: none;
+  display: block;
+}
+
+.post-body-link p,
 .postContent > p {
   color: #333;
   font-size: 15px;
   line-height: 1.5;
+}
+
+.post-body-link:hover p {
+  color: #555;
 }
 
 .actionButtons {

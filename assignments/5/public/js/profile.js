@@ -367,7 +367,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     ${deleteBtn}
                                 </div>
                             </div>
-                            <p>${post.content}</p>
+                            <a href="../post.html?id=${post.post_id}" class="post-body-link">
+                                <p>${post.content}</p>
+                            </a>
                             <div class="actionButtons">
                                 <button class="comment-btn" data-postid="${post.post_id}"><span><i class="fa-regular fa-comment"></i></span> <span class="comment-count">${commentCount}</span></button>
                                 <button class="like-btn ${likedClass}" data-postid="${post.post_id}"><span><i class="${heartClass} fa-heart"></i></span> <span class="like-count">${likeCount}</span></button>
@@ -522,6 +524,11 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const res = await fetch(`/api/posts/${postId}/comments`);
             const comments = await res.json();
+
+            if (!res.ok || !Array.isArray(comments)) {
+                list.innerHTML = '<p class="no-comments">No comments yet</p>';
+                return;
+            }
 
             if (comments.length === 0) {
                 list.innerHTML = '<p class="no-comments">No comments yet</p>';
