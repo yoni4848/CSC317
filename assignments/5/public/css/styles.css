@@ -168,12 +168,11 @@ textarea::placeholder {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
-  padding: 10px;
+  padding: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(8, 32px);
   gap: 4px;
-  max-width: 280px;
   z-index: 10;
 }
 
@@ -184,6 +183,11 @@ textarea::placeholder {
   border-radius: 4px;
   text-align: center;
   transition: background-color 0.2s;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .emoji-picker span:hover {

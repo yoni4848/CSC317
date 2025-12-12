@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 profileBio.textContent = bio;
                 editProfileForm.style.display = 'none';
                 editProfileBtn.style.display = 'block';
+                editProfileBtn.textContent = bio ? 'Edit Bio' : 'Add Bio';
             } catch (err) {
                 alert('Something went wrong');
             }
@@ -193,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // show edit button on own profile
             if (isOwnProfile && token) {
                 editProfileBtn.style.display = 'block';
+                editProfileBtn.textContent = userInfo.bio ? 'Edit Bio' : 'Add Bio';
             }
 
             loadUserPosts(userId, userInfo.username);
