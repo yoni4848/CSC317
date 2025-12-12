@@ -1,5 +1,5 @@
 //validator.js
-const MAX_POST_LENGTH = 300;
+const MAX_POST_LENGTH = 280;
 const MAX_COMMENT_LENGTH = 200;
 
 
