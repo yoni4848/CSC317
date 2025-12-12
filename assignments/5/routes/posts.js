@@ -2,17 +2,18 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 const { authenticateToken, checkPostOwnership } = require('../middlewares/auth');
+const { validatePost, validateComment } = require('../middlewares/validator');
 
 //create a new post
-router.post ('/', authenticateToken, async(req, res) => {
+router.post ('/', authenticateToken,validatePost, async(req, res) => {
 
     try{
 
         const { content } = req.body;
 
-        if (!content){
-            return res.status(400).json({error: 'Missing reqired fields'});
-        }
+        // if (!content){
+        //     return res.status(400).json({error: 'Missing reqired fields'});
+        // }
         const result = await db.query(
             'INSERT INTO posts (user_id, content) VALUES ($1, $2) RETURNING *', [req.user_id, content]
         );
@@ -158,14 +159,14 @@ router.get('/:id/likes', async (req, res) =>{
 });
 
 //write a comment under a post
-router.post('/:id/comments',authenticateToken, async (req, res) => {
+router.post('/:id/comments',authenticateToken, validateComment, async (req, res) => {
     try{
         const { id } = req.params;
         const { content } = req.body;
 
-        if (!content){
-            return res.status(400).json({error: 'Missing required fields'});
-        }
+        // if (!content){
+        //     return res.status(400).json({error: 'Missing required fields'});
+        // }
         const result = await db.query(
             'INSERT INTO comments (user_id, post_id, content) VALUES ($1, $2, $3) RETURNING *', [req.user_id, id, content]
         );
@@ -209,5 +210,7 @@ router.get('/:id/comments', async (req, res) => {
 
     }
 });
+
+
 
 module.exports = router;
