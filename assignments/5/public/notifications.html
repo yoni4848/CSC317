@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <title>Chirp - Notifications</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <h1 class="logo">NOTIFICATIONS</h1>
+            <div class="header-right">
+                <button class="mark-read-btn" id="markAllRead">Mark all read</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="notifications-list" id="notificationsList">
+            <p class="notifications-message">Loading...</p>
+        </div>
+    </div>
+
+    <nav class="bottomNav">
+        <div class="bottomNav-inner">
+            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i></a>
+            <a href="search.html" class="nav-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <button class="nav-btn add-btn"><i class="fa-solid fa-plus"></i></button>
+            <div class="nav-btn-wrapper">
+                <a href="notifications.html" class="nav-btn active"><i class="fa-solid fa-bell"></i></a>
+                <span class="notification-badge" id="notificationBadge" style="display: none;"></span>
+            </div>
+            <a href="user/profile.html" class="nav-btn"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </nav>
+
+    <script src="js/notifications.js"></script>
+</body>
+</html>

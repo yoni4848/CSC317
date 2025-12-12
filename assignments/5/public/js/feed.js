@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // check auth state
     checkAuth();
+    loadNotificationBadge();
 
     function checkAuth() {
         const token = localStorage.getItem('token');
@@ -162,18 +163,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function renderPosts(posts) {
         const token = localStorage.getItem('token');
+        const user = token ? JSON.parse(localStorage.getItem('user')) : null;
         let likedPostIds = [];
+        const postData = {};
 
-        // get user's liked posts if logged in
-        if (token) {
+        // get like counts, comment counts, and check if user liked
+        for (const post of posts) {
             try {
-                const user = JSON.parse(localStorage.getItem('user'));
-                for (const post of posts) {
-                    const res = await fetch(`/api/posts/${post.post_id}/likes`);
-                    const likes = await res.json();
-                    if (likes.some(l => l.user_id === user.user_id)) {
-                        likedPostIds.push(post.post_id);
-                    }
+                const [likesRes, commentsRes] = await Promise.all([
+                    fetch(`/api/posts/${post.post_id}/likes`),
+                    fetch(`/api/posts/${post.post_id}/comments`)
+                ]);
+                const likes = await likesRes.json();
+                const comments = await commentsRes.json();
+
+                postData[post.post_id] = {
+                    likeCount: likes.length,
+                    commentCount: comments.length
+                };
+
+                if (user && likes.some(l => l.user_id === user.user_id)) {
+                    likedPostIds.push(post.post_id);
                 }
             } catch (err) {
                 console.error(err);
@@ -186,6 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isLiked = likedPostIds.includes(post.post_id);
             const heartClass = isLiked ? 'fa-solid' : 'fa-regular';
             const likedClass = isLiked ? 'liked' : '';
+            const likeCount = postData[post.post_id]?.likeCount || 0;
+            const commentCount = postData[post.post_id]?.commentCount || 0;
 
             return `
                 <article class="userPost">
@@ -202,8 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <p>${post.content}</p>
                         <div class="actionButtons">
-                            <button class="comment-btn" data-postid="${post.post_id}"><span><i class="fa-regular fa-comment"></i></span> <span class="comment-count">0</span></button>
-                            <button class="like-btn ${likedClass}" data-postid="${post.post_id}"><span><i class="${heartClass} fa-heart"></i></span> <span class="like-count">${post.like_count || 0}</span></button>
+                            <button class="comment-btn" data-postid="${post.post_id}"><span><i class="fa-regular fa-comment"></i></span> <span class="comment-count">${commentCount}</span></button>
+                            <button class="like-btn ${likedClass}" data-postid="${post.post_id}"><span><i class="${heartClass} fa-heart"></i></span> <span class="like-count">${likeCount}</span></button>
                         </div>
                         <div class="comments-section" data-postid="${post.post_id}" style="display: none;">
                             <div class="comments-list"></div>
@@ -396,5 +408,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seconds < 604800) return Math.floor(seconds / 86400) + 'd';
 
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    async function loadNotificationBadge() {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        try {
+            const res = await fetch('/api/notifications', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const notifications = await res.json();
+            const unread = notifications.filter(n => !n.is_read).length;
+            const badge = document.getElementById('notificationBadge');
+
+            if (badge && unread > 0) {
+                badge.textContent = unread > 99 ? '99+' : unread;
+                badge.style.display = 'flex';
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 });

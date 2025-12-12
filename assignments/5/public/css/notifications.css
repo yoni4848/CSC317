@@ -1,0 +1,108 @@
+.mark-read-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #666;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.mark-read-btn:hover {
+    border-color: #333;
+    color: #333;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notifications-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 15px;
+}
+
+.notification {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: background-color 0.3s;
+}
+
+.notification.unread {
+    background-color: #f0f7ff;
+}
+
+.notification-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-text {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.notification-text a {
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.notification-text a:hover {
+    text-decoration: underline;
+}
+
+.notification-time {
+    font-size: 13px;
+    color: #999;
+}
+
+.notification-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.notification-icon.like {
+    background-color: #ffe5e5;
+    color: #ff3b30;
+}
+
+.notification-icon.comment {
+    background-color: #e5f0ff;
+    color: #007aff;
+}
+
+.notification-icon.follow {
+    background-color: #e5ffe5;
+    color: #34c759;
+}

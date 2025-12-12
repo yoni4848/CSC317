@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (token && userData) {
         loginBtn.style.display = 'none';
         userMenu.style.display = 'flex';
+        loadNotificationBadge();
     } else {
         loginBtn.style.display = 'block';
         userMenu.style.display = 'none';
@@ -254,8 +255,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const initial = username.charAt(0).toUpperCase();
 
+            // get like counts, comment counts, and check if user liked
+            let likedPostIds = [];
+            const postData = {};
+
+            for (const post of posts) {
+                const [likesRes, commentsRes] = await Promise.all([
+                    fetch(`/api/posts/${post.post_id}/likes`),
+                    fetch(`/api/posts/${post.post_id}/comments`)
+                ]);
+                const likes = await likesRes.json();
+                const comments = await commentsRes.json();
+
+                postData[post.post_id] = {
+                    likeCount: likes.length,
+                    commentCount: comments.length
+                };
+
+                if (token && userData && likes.some(l => l.user_id === userData.user_id)) {
+                    likedPostIds.push(post.post_id);
+                }
+            }
+
             userPosts.innerHTML = posts.map(post => {
                 const timeAgo = getTimeAgo(post.created_at);
+                const isLiked = likedPostIds.includes(post.post_id);
+                const heartClass = isLiked ? 'fa-solid' : 'fa-regular';
+                const likedClass = isLiked ? 'liked' : '';
+                const likeCount = postData[post.post_id]?.likeCount || 0;
+                const commentCount = postData[post.post_id]?.commentCount || 0;
 
                 return `
                     <article class="userPost">
@@ -272,16 +300,170 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <p>${post.content}</p>
                             <div class="actionButtons">
-                                <button><span><i class="fa-regular fa-comment"></i></span> <span>0</span></button>
-                                <button><span><i class="fa-solid fa-heart"></i></span> <span>0</span></button>
+                                <button class="comment-btn" data-postid="${post.post_id}"><span><i class="fa-regular fa-comment"></i></span> <span class="comment-count">${commentCount}</span></button>
+                                <button class="like-btn ${likedClass}" data-postid="${post.post_id}"><span><i class="${heartClass} fa-heart"></i></span> <span class="like-count">${likeCount}</span></button>
+                            </div>
+                            <div class="comments-section" data-postid="${post.post_id}" style="display: none;">
+                                <div class="comments-list"></div>
+                                <div class="comment-input">
+                                    <input type="text" placeholder="Write a comment..." class="comment-text">
+                                    <button class="comment-submit"><i class="fa-solid fa-paper-plane"></i></button>
+                                </div>
                             </div>
                         </div>
                     </article>
                 `;
             }).join('');
 
+            // add like button handlers
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', handleLike);
+            });
+
+            // add comment button handlers
+            document.querySelectorAll('.comment-btn').forEach(btn => {
+                btn.addEventListener('click', toggleComments);
+            });
+
+            // add comment submit handlers
+            document.querySelectorAll('.comment-submit').forEach(btn => {
+                btn.addEventListener('click', submitComment);
+            });
+
         } catch (err) {
             userPosts.innerHTML = '<p class="no-posts">Error loading posts</p>';
+        }
+    }
+
+    async function handleLike(e) {
+        if (!token) {
+            window.location.href = '../auth/login.html';
+            return;
+        }
+
+        const btn = e.currentTarget;
+        const postId = btn.dataset.postid;
+        const isLiked = btn.classList.contains('liked');
+        const icon = btn.querySelector('i');
+        const countSpan = btn.querySelector('.like-count');
+        let count = parseInt(countSpan.textContent);
+
+        try {
+            if (isLiked) {
+                await fetch(`/api/posts/${postId}/like`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                btn.classList.remove('liked');
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+                countSpan.textContent = count - 1;
+            } else {
+                await fetch(`/api/posts/${postId}/like`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                btn.classList.add('liked');
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+                countSpan.textContent = count + 1;
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function toggleComments(e) {
+        const btn = e.currentTarget;
+        const postId = btn.dataset.postid;
+        const section = document.querySelector(`.comments-section[data-postid="${postId}"]`);
+
+        if (section.style.display === 'none') {
+            section.style.display = 'block';
+            await loadComments(postId);
+        } else {
+            section.style.display = 'none';
+        }
+    }
+
+    async function loadComments(postId) {
+        const section = document.querySelector(`.comments-section[data-postid="${postId}"]`);
+        const list = section.querySelector('.comments-list');
+
+        try {
+            const res = await fetch(`/api/posts/${postId}/comments`);
+            const comments = await res.json();
+
+            if (comments.length === 0) {
+                list.innerHTML = '<p class="no-comments">No comments yet</p>';
+                return;
+            }
+
+            list.innerHTML = comments.map(comment => {
+                const initial = comment.username.charAt(0).toUpperCase();
+                const timeAgo = getTimeAgo(comment.created_at);
+
+                return `
+                    <div class="comment">
+                        <a href="profile.html?id=${comment.user_id}" class="comment-author">
+                            <div class="comment-avatar">${initial}</div>
+                        </a>
+                        <div class="comment-body">
+                            <div class="comment-header">
+                                <a href="profile.html?id=${comment.user_id}" class="comment-username">${comment.username}</a>
+                                <span class="comment-time">${timeAgo}</span>
+                            </div>
+                            <p class="comment-content">${comment.content}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+        } catch (err) {
+            list.innerHTML = '<p class="no-comments">Failed to load comments</p>';
+        }
+    }
+
+    async function submitComment(e) {
+        if (!token) {
+            window.location.href = '../auth/login.html';
+            return;
+        }
+
+        const btn = e.currentTarget;
+        const section = btn.closest('.comments-section');
+        const postId = section.dataset.postid;
+        const input = section.querySelector('.comment-text');
+        const content = input.value.trim();
+
+        if (!content) return;
+
+        try {
+            const res = await fetch(`/api/posts/${postId}/comments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ content })
+            });
+
+            if (!res.ok) {
+                const data = await res.json();
+                alert(data.error || 'Failed to post comment');
+                return;
+            }
+
+            input.value = '';
+            await loadComments(postId);
+
+            // update count
+            const commentBtn = document.querySelector(`.comment-btn[data-postid="${postId}"]`);
+            const countSpan = commentBtn.querySelector('.comment-count');
+            countSpan.textContent = parseInt(countSpan.textContent) + 1;
+
+        } catch (err) {
+            alert('Something went wrong');
         }
     }
 
@@ -296,5 +478,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seconds < 604800) return Math.floor(seconds / 86400) + 'd';
 
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    async function loadNotificationBadge() {
+        try {
+            const res = await fetch('/api/notifications', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const notifications = await res.json();
+            const unread = notifications.filter(n => !n.is_read).length;
+            const badge = document.getElementById('notificationBadge');
+
+            if (badge && unread > 0) {
+                badge.textContent = unread > 99 ? '99+' : unread;
+                badge.style.display = 'flex';
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 });

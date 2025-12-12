@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginBtn.style.display = 'none';
         userMenu.style.display = 'flex';
         usernameSpan.textContent = '@' + userData.username;
+        loadNotificationBadge();
     }
 
     // logout
@@ -159,5 +160,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seconds < 604800) return Math.floor(seconds / 86400) + 'd';
 
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    async function loadNotificationBadge() {
+        try {
+            const res = await fetch('/api/notifications', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const notifications = await res.json();
+            const unread = notifications.filter(n => !n.is_read).length;
+            const badge = document.getElementById('notificationBadge');
+
+            if (badge && unread > 0) {
+                badge.textContent = unread > 99 ? '99+' : unread;
+                badge.style.display = 'flex';
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 });
