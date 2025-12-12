@@ -34,6 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // add button - go to home and compose
+    const addBtn = document.querySelector('.add-btn');
+    if (addBtn) {
+        addBtn.addEventListener('click', () => {
+            window.location.href = 'index.html?compose=1';
+        });
+    }
+
     loadPost();
 
     async function loadPost() {

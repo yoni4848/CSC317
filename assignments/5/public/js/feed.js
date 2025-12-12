@@ -38,6 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // add button - scroll to top and focus textarea
+    const addBtn = document.querySelector('.add-btn');
+    if (addBtn) {
+        addBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                if (textarea) textarea.focus();
+            }, 300);
+        });
+    }
+
+    // check if coming from compose link
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('compose') === '1' && textarea) {
+        textarea.focus();
+        history.replaceState({}, '', '/');
+    }
+
     // load explore on page load
     loadExplore();
 
