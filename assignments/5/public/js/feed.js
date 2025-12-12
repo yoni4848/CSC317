@@ -169,13 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <article class="userPost">
                     <div class="postContent">
                         <div class="post-header">
-                            <div class="post-author">
+                            <a href="/user/profile.html?id=${post.user_id}" class="post-author">
                                 <div class="avatar">${initial}</div>
                                 <div class="profileInfo">
                                     <span class="profileName">${post.username}</span>
                                     <span class="profileHandle">@${post.username.toLowerCase()}</span>
                                 </div>
-                            </div>
+                            </a>
                             <span class="post-time">${timeAgo}</span>
                         </div>
                         <p>${post.content}</p>

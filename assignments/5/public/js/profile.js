@@ -12,30 +12,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
+    const userData = user ? JSON.parse(user) : null;
 
-    if (!token || !user) {
+    // get user id from URL or use logged in user
+    const urlParams = new URLSearchParams(window.location.search);
+    const profileUserId = urlParams.get('id') || (userData ? userData.user_id : null);
+
+    if (!profileUserId) {
         window.location.href = '../auth/login.html';
         return;
     }
 
-    const userData = JSON.parse(user);
-
-    // update header
-    loginBtn.style.display = 'none';
-    userMenu.style.display = 'flex';
+    // update header based on auth
+    if (token && userData) {
+        loginBtn.style.display = 'none';
+        userMenu.style.display = 'flex';
+    } else {
+        loginBtn.style.display = 'block';
+        userMenu.style.display = 'none';
+    }
 
     // logout
-    logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        window.location.href = '../index.html';
-    });
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = '../index.html';
+        });
+    }
 
-    loadProfile(userData.user_id);
+    loadProfile(profileUserId);
 
     async function loadProfile(userId) {
         try {
-            // fetch user data
             const userRes = await fetch(`/api/users/${userId}`);
             const userInfo = await userRes.json();
 
@@ -61,28 +70,28 @@ document.addEventListener('DOMContentLoaded', () => {
             followersCount.textContent = followers.length || 0;
             followingCount.textContent = following.length || 0;
 
-            // fetch user posts
-            loadUserPosts(userId);
+            loadUserPosts(userId, userInfo.username);
 
         } catch (err) {
             profileName.textContent = 'Error loading profile';
         }
     }
 
-    async function loadUserPosts(userId) {
+    async function loadUserPosts(userId, username) {
         try {
             const res = await fetch('/api/posts');
             const allPosts = await res.json();
 
-            const posts = allPosts.filter(post => post.user_id === userId);
+            const posts = allPosts.filter(post => post.user_id == userId);
 
             if (posts.length === 0) {
                 userPosts.innerHTML = '<p class="no-posts">No posts yet</p>';
                 return;
             }
 
+            const initial = username.charAt(0).toUpperCase();
+
             userPosts.innerHTML = posts.map(post => {
-                const initial = userData.username.charAt(0).toUpperCase();
                 const timeAgo = getTimeAgo(post.created_at);
 
                 return `
@@ -92,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="post-author">
                                     <div class="avatar">${initial}</div>
                                     <div class="profileInfo">
-                                        <span class="profileName">${userData.username}</span>
-                                        <span class="profileHandle">@${userData.username.toLowerCase()}</span>
+                                        <span class="profileName">${username}</span>
+                                        <span class="profileHandle">@${username.toLowerCase()}</span>
                                     </div>
                                 </div>
                                 <span class="post-time">${timeAgo}</span>

@@ -249,6 +249,12 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-author:hover .profileName {
+  text-decoration: underline;
 }
 
 .avatar {
@@ -332,11 +338,15 @@ textarea::placeholder {
   right: 0;
   background-color: white;
   border-top: 1px solid #e0e0e0;
+}
+
+.bottomNav-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .bottomNav a {
@@ -346,12 +356,11 @@ textarea::placeholder {
 .nav-btn {
   background-color: transparent;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   color: #666;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 8px 12px;
   transition: color 0.3s;
-  position: relative;
 }
 
 .nav-btn:hover {
@@ -366,12 +375,13 @@ textarea::placeholder {
   background-color: #333;
   color: white;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
 }
 
 .nav-btn.add-btn:hover {
