@@ -327,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadComments(postId) {
         const section = document.querySelector(`.comments-section[data-postid="${postId}"]`);
         const list = section.querySelector('.comments-list');
+        const token = localStorage.getItem('token');
 
         try {
             const res = await fetch(`/api/posts/${postId}/comments`);
