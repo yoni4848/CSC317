@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Chirp – Profile</title>
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/profile.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <title>Chirp - Profile</title>
 </head>
-
 <body>
-  <main class="page">
-    <section class="card" style="padding: 3rem 3.5rem;">
-      
-      <!-- Header brand -->
-      <div class="brand" style="margin-bottom: 2rem;">PROFILE</div>
 
-      <!-- Profile header -->
-      <div class="profile-header">
-        <div class="profile-avatar">J</div>
-
-        <div>
-          <h1 class="profile-name">John Doe</h1>
-          <p class="profile-handle">@johndoe</p>
-          <p class="profile-bio">
-            Full-stack developer. Building things that matter. Coffee enthusiast.
-          </p>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i></a>
+            <h1 class="logo">PROFILE</h1>
+            <div class="header-right">
+                <a href="../auth/login.html" class="login-btn" id="loginBtn">Login</a>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <button class="logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <!-- Stats -->
-      <div class="profile-stats">
-        <div class="stat">
-          <div class="stat-number">1.2k</div>
-          <div class="stat-label">Following</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">5.6k</div>
-          <div class="stat-label">Followers</div>
-        </div>
-      </div>
+    <div class="main">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">?</div>
+                <div class="profile-info">
+                    <h2 class="profile-name" id="profileName">Loading...</h2>
+                    <p class="profile-handle" id="profileHandle">@...</p>
+                </div>
+            </div>
 
-    </section>
-  </main>
+            <p class="profile-bio" id="profileBio"></p>
+
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-number" id="followingCount">0</span>
+                    <span class="stat-label">Following</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="followersCount">0</span>
+                    <span class="stat-label">Followers</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="profile-tab active">Posts</button>
+        </div>
+
+        <div class="userFeed" id="userPosts"></div>
+    </div>
+
+    <nav class="bottomNav">
+        <a href="../index.html" class="nav-btn"><i class="fa-solid fa-house"></i></a>
+        <a href="#" class="nav-btn"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <button class="nav-btn add-btn"><i class="fa-solid fa-plus"></i></button>
+        <a href="#" class="nav-btn"><i class="fa-solid fa-bell"></i></a>
+        <a href="profile.html" class="nav-btn active"><i class="fa-solid fa-user"></i></a>
+    </nav>
+
+    <script src="../js/profile.js"></script>
 </body>
 </html>
