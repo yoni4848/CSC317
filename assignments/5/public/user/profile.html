@@ -31,20 +31,29 @@
                     <h2 class="profile-name" id="profileName">Loading...</h2>
                     <p class="profile-handle" id="profileHandle">@...</p>
                 </div>
+                <button class="follow-btn" id="followBtn" style="display: none;">Follow</button>
             </div>
 
             <p class="profile-bio" id="profileBio"></p>
 
             <div class="profile-stats">
-                <div class="stat">
+                <button class="stat stat-btn" id="followingBtn">
                     <span class="stat-number" id="followingCount">0</span>
                     <span class="stat-label">Following</span>
-                </div>
-                <div class="stat">
+                </button>
+                <button class="stat stat-btn" id="followersBtn">
                     <span class="stat-number" id="followersCount">0</span>
                     <span class="stat-label">Followers</span>
-                </div>
+                </button>
             </div>
+        </div>
+
+        <div class="users-list" id="usersList" style="display: none;">
+            <div class="users-list-header">
+                <h3 id="usersListTitle">Following</h3>
+                <button class="close-btn" id="closeListBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="users-list-content" id="usersListContent"></div>
         </div>
 
         <div class="profile-tabs">
