@@ -322,13 +322,21 @@ textarea::placeholder {
   color: #333;
 }
 
-.actionButtons button:nth-child(2) {
+.like-btn {
+  color: #999;
+}
+
+.like-btn:hover {
+  background-color: #ffe5e5;
   color: #ff3b30;
 }
 
-.actionButtons button:nth-child(2):hover {
-  background-color: #ffe5e5;
+.like-btn.liked {
   color: #ff3b30;
+}
+
+.like-btn.liked:hover {
+  background-color: #ffe5e5;
 }
 
 .bottomNav {

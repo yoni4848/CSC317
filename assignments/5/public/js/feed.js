@@ -160,10 +160,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderPosts(posts) {
+    async function renderPosts(posts) {
+        const token = localStorage.getItem('token');
+        let likedPostIds = [];
+
+        // get user's liked posts if logged in
+        if (token) {
+            try {
+                const user = JSON.parse(localStorage.getItem('user'));
+                for (const post of posts) {
+                    const res = await fetch(`/api/posts/${post.post_id}/likes`);
+                    const likes = await res.json();
+                    if (likes.some(l => l.user_id === user.user_id)) {
+                        likedPostIds.push(post.post_id);
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
         feed.innerHTML = posts.map(post => {
             const initial = post.username.charAt(0).toUpperCase();
             const timeAgo = getTimeAgo(post.created_at);
+            const isLiked = likedPostIds.includes(post.post_id);
+            const heartClass = isLiked ? 'fa-solid' : 'fa-regular';
+            const likedClass = isLiked ? 'liked' : '';
 
             return `
                 <article class="userPost">
@@ -180,13 +202,57 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <p>${post.content}</p>
                         <div class="actionButtons">
-                            <button><span><i class="fa-regular fa-comment"></i></span> <span>0</span></button>
-                            <button><span><i class="fa-solid fa-heart"></i></span> <span>${post.like_count || 0}</span></button>
+                            <button class="comment-btn" data-postid="${post.post_id}"><span><i class="fa-regular fa-comment"></i></span> <span>0</span></button>
+                            <button class="like-btn ${likedClass}" data-postid="${post.post_id}"><span><i class="${heartClass} fa-heart"></i></span> <span class="like-count">${post.like_count || 0}</span></button>
                         </div>
                     </div>
                 </article>
             `;
         }).join('');
+
+        // add like button handlers
+        document.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', handleLike);
+        });
+    }
+
+    async function handleLike(e) {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/auth/login.html';
+            return;
+        }
+
+        const btn = e.currentTarget;
+        const postId = btn.dataset.postid;
+        const isLiked = btn.classList.contains('liked');
+        const icon = btn.querySelector('i');
+        const countSpan = btn.querySelector('.like-count');
+        let count = parseInt(countSpan.textContent);
+
+        try {
+            if (isLiked) {
+                await fetch(`/api/posts/${postId}/like`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                btn.classList.remove('liked');
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+                countSpan.textContent = count - 1;
+            } else {
+                await fetch(`/api/posts/${postId}/like`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                btn.classList.add('liked');
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+                countSpan.textContent = count + 1;
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     function getTimeAgo(dateString) {
