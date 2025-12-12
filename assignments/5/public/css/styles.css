@@ -14,14 +14,19 @@ body {
 
 .header {
   background-color: white;
-  padding: 15px 20px;
   border-bottom: 1px solid #e0e0e0;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.header-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -31,35 +36,55 @@ body {
   color: #333;
 }
 
-.auth-links {
-  position: absolute;
-  right: 20px;
+.header-right {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 12px;
 }
 
-.auth-links a {
+.login-btn {
   text-decoration: none;
-  color: #666;
+  color: #333;
   font-size: 14px;
   font-weight: 500;
-  transition: color 0.3s;
+  padding: 8px 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  transition: all 0.3s;
 }
 
-.auth-links a:hover {
+.login-btn:hover {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 500;
   color: #333;
 }
 
-.register-link {
-  background-color: #333;
-  color: white !important;
-  padding: 8px 16px;
+.logout-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #666;
+  font-size: 13px;
+  padding: 6px 14px;
   border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.register-link:hover {
-  background-color: #555;
-  color: white !important;
+.logout-btn:hover {
+  border-color: #ff3b30;
+  color: #ff3b30;
 }
 
 .main {

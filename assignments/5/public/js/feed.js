@@ -4,7 +4,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.querySelector('.postCreation textarea');
     const shareBtn = document.querySelector('.compose-meta button');
     const charCount = document.querySelector('.char-count');
+    const loginBtn = document.getElementById('loginBtn');
+    const userMenu = document.getElementById('userMenu');
+    const usernameSpan = document.getElementById('username');
+    const logoutBtn = document.getElementById('logoutBtn');
     let currentTab = 'explore';
+
+    // check auth state
+    checkAuth();
+
+    function checkAuth() {
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+
+        if (token && user) {
+            const userData = JSON.parse(user);
+            loginBtn.style.display = 'none';
+            userMenu.style.display = 'flex';
+            usernameSpan.textContent = '@' + userData.username;
+        } else {
+            loginBtn.style.display = 'block';
+            userMenu.style.display = 'none';
+        }
+    }
+
+    // logout
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.reload();
+        });
+    }
 
     // load explore on page load
     loadExplore();
@@ -50,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 textarea.value = '';
                 charCount.textContent = '280';
+                charCount.style.color = '#999';
                 loadExplore();
 
             } catch (err) {
