@@ -337,6 +337,28 @@ textarea::placeholder {
   font-size: 13px;
 }
 
+.post-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.delete-btn:hover {
+  color: #ff3b30;
+  background-color: #ffe5e5;
+}
+
 .postContent > p {
   color: #333;
   font-size: 15px;
@@ -432,6 +454,23 @@ textarea::placeholder {
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
+}
+
+.delete-comment-btn {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 6px;
+  margin-left: auto;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.delete-comment-btn:hover {
+  color: #ff3b30;
+  background-color: #ffe5e5;
 }
 
 .comment-username {

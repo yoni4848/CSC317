@@ -335,12 +335,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            const user = token ? JSON.parse(localStorage.getItem('user')) : null;
+
             list.innerHTML = comments.map(comment => {
                 const initial = comment.username.charAt(0).toUpperCase();
                 const timeAgo = getTimeAgo(comment.created_at);
+                const isOwnComment = user && comment.user_id === user.user_id;
+                const deleteBtn = isOwnComment ? `<button class="delete-comment-btn" data-commentid="${comment.comment_id}"><i class="fa-regular fa-trash-can"></i></button>` : '';
 
                 return `
-                    <div class="comment">
+                    <div class="comment" data-commentid="${comment.comment_id}">
                         <a href="/user/profile.html?id=${comment.user_id}" class="comment-author">
                             <div class="comment-avatar">${initial}</div>
                         </a>
@@ -348,12 +352,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="comment-header">
                                 <a href="/user/profile.html?id=${comment.user_id}" class="comment-username">${comment.username}</a>
                                 <span class="comment-time">${timeAgo}</span>
+                                ${deleteBtn}
                             </div>
                             <p class="comment-content">${comment.content}</p>
                         </div>
                     </div>
                 `;
             }).join('');
+
+            // add delete comment handlers
+            list.querySelectorAll('.delete-comment-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => handleDeleteComment(e, postId));
+            });
 
         } catch (err) {
             list.innerHTML = '<p class="no-comments">Failed to load comments</p>';
@@ -440,6 +450,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (err) {
             console.error(err);
+        }
+    }
+
+    async function handleDeleteComment(e, postId) {
+        const token = localStorage.getItem('token');
+        const btn = e.currentTarget;
+        const commentId = btn.dataset.commentid;
+
+        if (!confirm('Delete this comment?')) return;
+
+        try {
+            const res = await fetch(`/api/comments/${commentId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (!res.ok) {
+                alert('Failed to delete comment');
+                return;
+            }
+
+            const commentEl = document.querySelector(`.comment[data-commentid="${commentId}"]`);
+            if (commentEl) commentEl.remove();
+
+            // update count
+            const commentBtn = document.querySelector(`.comment-btn[data-postid="${postId}"]`);
+            if (commentBtn) {
+                const countSpan = commentBtn.querySelector('.comment-count');
+                countSpan.textContent = Math.max(0, parseInt(countSpan.textContent) - 1);
+            }
+        } catch (err) {
+            alert('Something went wrong');
         }
     }
 

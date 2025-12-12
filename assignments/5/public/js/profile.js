@@ -347,9 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const likedClass = isLiked ? 'liked' : '';
                 const likeCount = postData[post.post_id]?.likeCount || 0;
                 const commentCount = postData[post.post_id]?.commentCount || 0;
+                const deleteBtn = isOwnProfile && token ? `<button class="delete-btn" data-postid="${post.post_id}"><i class="fa-regular fa-trash-can"></i></button>` : '';
 
                 return `
-                    <article class="userPost">
+                    <article class="userPost" data-postid="${post.post_id}">
                         <div class="postContent">
                             <div class="post-header">
                                 <div class="post-author">
@@ -359,7 +360,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <span class="profileHandle">@${username.toLowerCase()}</span>
                                     </div>
                                 </div>
-                                <span class="post-time">${timeAgo}</span>
+                                <div class="post-header-right">
+                                    <span class="post-time">${timeAgo}</span>
+                                    ${deleteBtn}
+                                </div>
                             </div>
                             <p>${post.content}</p>
                             <div class="actionButtons">
@@ -393,8 +397,68 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.addEventListener('click', submitComment);
             });
 
+            // add delete button handlers
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', handleDeletePost);
+            });
+
         } catch (err) {
             userPosts.innerHTML = '<p class="no-posts">Error loading posts</p>';
+        }
+    }
+
+    async function handleDeletePost(e) {
+        const btn = e.currentTarget;
+        const postId = btn.dataset.postid;
+
+        if (!confirm('Are you sure you want to delete this post?')) return;
+
+        try {
+            const res = await fetch(`/api/posts/${postId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (!res.ok) {
+                alert('Failed to delete post');
+                return;
+            }
+
+            const postEl = document.querySelector(`.userPost[data-postid="${postId}"]`);
+            if (postEl) postEl.remove();
+        } catch (err) {
+            alert('Something went wrong');
+        }
+    }
+
+    async function handleDeleteComment(e, postId) {
+        const btn = e.currentTarget;
+        const commentId = btn.dataset.commentid;
+
+        if (!confirm('Delete this comment?')) return;
+
+        try {
+            const res = await fetch(`/api/comments/${commentId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (!res.ok) {
+                alert('Failed to delete comment');
+                return;
+            }
+
+            const commentEl = document.querySelector(`.comment[data-commentid="${commentId}"]`);
+            if (commentEl) commentEl.remove();
+
+            // update count
+            const commentBtn = document.querySelector(`.comment-btn[data-postid="${postId}"]`);
+            if (commentBtn) {
+                const countSpan = commentBtn.querySelector('.comment-count');
+                countSpan.textContent = Math.max(0, parseInt(countSpan.textContent) - 1);
+            }
+        } catch (err) {
+            alert('Something went wrong');
         }
     }
 
@@ -465,9 +529,11 @@ document.addEventListener('DOMContentLoaded', () => {
             list.innerHTML = comments.map(comment => {
                 const initial = comment.username.charAt(0).toUpperCase();
                 const timeAgo = getTimeAgo(comment.created_at);
+                const isOwnComment = userData && comment.user_id === userData.user_id;
+                const deleteBtn = isOwnComment ? `<button class="delete-comment-btn" data-commentid="${comment.comment_id}"><i class="fa-regular fa-trash-can"></i></button>` : '';
 
                 return `
-                    <div class="comment">
+                    <div class="comment" data-commentid="${comment.comment_id}">
                         <a href="profile.html?id=${comment.user_id}" class="comment-author">
                             <div class="comment-avatar">${initial}</div>
                         </a>
@@ -475,12 +541,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="comment-header">
                                 <a href="profile.html?id=${comment.user_id}" class="comment-username">${comment.username}</a>
                                 <span class="comment-time">${timeAgo}</span>
+                                ${deleteBtn}
                             </div>
                             <p class="comment-content">${comment.content}</p>
                         </div>
                     </div>
                 `;
             }).join('');
+
+            // add delete comment handlers
+            list.querySelectorAll('.delete-comment-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => handleDeleteComment(e, postId));
+            });
 
         } catch (err) {
             list.innerHTML = '<p class="no-comments">Failed to load comments</p>';

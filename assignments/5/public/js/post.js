@@ -124,9 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
             list.innerHTML = comments.map(comment => {
                 const initial = comment.username.charAt(0).toUpperCase();
                 const timeAgo = getTimeAgo(comment.created_at);
+                const isOwnComment = userData && comment.user_id === userData.user_id;
+                const deleteBtn = isOwnComment ? `<button class="delete-comment-btn" data-commentid="${comment.comment_id}"><i class="fa-regular fa-trash-can"></i></button>` : '';
 
                 return `
-                    <div class="comment">
+                    <div class="comment" data-commentid="${comment.comment_id}">
                         <a href="/user/profile.html?id=${comment.user_id}" class="comment-author">
                             <div class="comment-avatar">${initial}</div>
                         </a>
@@ -134,12 +136,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="comment-header">
                                 <a href="/user/profile.html?id=${comment.user_id}" class="comment-username">${comment.username}</a>
                                 <span class="comment-time">${timeAgo}</span>
+                                ${deleteBtn}
                             </div>
                             <p class="comment-content">${comment.content}</p>
                         </div>
                     </div>
                 `;
             }).join('');
+
+            // add delete comment handlers
+            list.querySelectorAll('.delete-comment-btn').forEach(btn => {
+                btn.addEventListener('click', handleDeleteComment);
+            });
 
         } catch (err) {
             list.innerHTML = '<p class="no-comments">Failed to load comments</p>';
@@ -216,6 +224,36 @@ document.addEventListener('DOMContentLoaded', () => {
             const countSpan = document.querySelector('.comment-count');
             countSpan.textContent = parseInt(countSpan.textContent) + 1;
 
+        } catch (err) {
+            alert('Something went wrong');
+        }
+    }
+
+    async function handleDeleteComment(e) {
+        const btn = e.currentTarget;
+        const commentId = btn.dataset.commentid;
+
+        if (!confirm('Delete this comment?')) return;
+
+        try {
+            const res = await fetch(`/api/comments/${commentId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (!res.ok) {
+                alert('Failed to delete comment');
+                return;
+            }
+
+            const commentEl = document.querySelector(`.comment[data-commentid="${commentId}"]`);
+            if (commentEl) commentEl.remove();
+
+            // update count
+            const countSpan = document.querySelector('.comment-count');
+            if (countSpan) {
+                countSpan.textContent = Math.max(0, parseInt(countSpan.textContent) - 1);
+            }
         } catch (err) {
             alert('Something went wrong');
         }
