@@ -1,26 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
     const notificationsList = document.getElementById('notificationsList');
-    const markAllReadBtn = document.getElementById('markAllRead');
+    const loginBtn = document.getElementById('loginBtn');
+    const userMenu = document.getElementById('userMenu');
+    const usernameSpan = document.getElementById('username');
+    const logoutBtn = document.getElementById('logoutBtn');
 
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
 
     if (!token) {
         window.location.href = 'auth/login.html';
         return;
     }
 
-    loadNotifications();
-    updateBadge();
+    // update header
+    if (user) {
+        const userData = JSON.parse(user);
+        loginBtn.style.display = 'none';
+        userMenu.style.display = 'flex';
+        usernameSpan.textContent = '@' + userData.username;
+    }
 
-    markAllReadBtn.addEventListener('click', async () => {
+    // logout
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        });
+    }
+
+    loadNotifications();
+    markAllAsRead();
+
+    async function markAllAsRead() {
         try {
             await fetch('/api/notifications/read', {
                 method: 'PUT',
                 headers: { 'Authorization': `Bearer ${token}` }
-            });
-
-            document.querySelectorAll('.notification.unread').forEach(n => {
-                n.classList.remove('unread');
             });
 
             const badge = document.getElementById('notificationBadge');
@@ -28,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (err) {
             console.error(err);
         }
-    });
+    }
 
     async function loadNotifications() {
         try {
@@ -50,43 +67,47 @@ document.addEventListener('DOMContentLoaded', () => {
             notificationsList.innerHTML = notifications.map(n => {
                 const initial = n.username.charAt(0).toUpperCase();
                 const timeAgo = getTimeAgo(n.created_at);
-                const unreadClass = n.is_read ? '' : 'unread';
 
                 let text = '';
                 let iconClass = '';
                 let iconSymbol = '';
+                let link = '';
 
                 switch (n.type) {
                     case 'like':
-                        text = `<a href="/user/profile.html?id=${n.from_user_id}">${n.username}</a> liked your post`;
+                        text = `<strong>${n.username}</strong> liked your post`;
                         iconClass = 'like';
                         iconSymbol = '<i class="fa-solid fa-heart"></i>';
+                        link = `/user/profile.html?id=${JSON.parse(user).user_id}`;
                         break;
                     case 'comment':
-                        text = `<a href="/user/profile.html?id=${n.from_user_id}">${n.username}</a> commented on your post`;
+                        text = `<strong>${n.username}</strong> commented on your post`;
                         iconClass = 'comment';
                         iconSymbol = '<i class="fa-solid fa-comment"></i>';
+                        link = `/user/profile.html?id=${JSON.parse(user).user_id}`;
                         break;
                     case 'follow':
-                        text = `<a href="/user/profile.html?id=${n.from_user_id}">${n.username}</a> started following you`;
+                        text = `<strong>${n.username}</strong> started following you`;
                         iconClass = 'follow';
                         iconSymbol = '<i class="fa-solid fa-user-plus"></i>';
+                        link = `/user/profile.html?id=${n.from_user_id}`;
                         break;
                     default:
-                        text = `<a href="/user/profile.html?id=${n.from_user_id}">${n.username}</a> interacted with you`;
+                        text = `<strong>${n.username}</strong> interacted with you`;
                         iconClass = 'follow';
                         iconSymbol = '<i class="fa-solid fa-bell"></i>';
+                        link = `/user/profile.html?id=${n.from_user_id}`;
                 }
 
                 return `
-                    <div class="notification ${unreadClass}" data-id="${n.notification_id}">
-                        <a href="/user/profile.html?id=${n.from_user_id}" class="notification-avatar">${initial}</a>
+                    <a href="${link}" class="notification" data-id="${n.notification_id}">
+                        <div class="notification-avatar">${initial}</div>
                         <div class="notification-content">
                             <p class="notification-text">${text}</p>
                             <span class="notification-time">${timeAgo}</span>
                         </div>
                         <div class="notification-icon ${iconClass}">${iconSymbol}</div>
-                    </div>
+                    </a>
                 `;
             }).join('');
 
@@ -106,27 +127,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (seconds < 604800) return Math.floor(seconds / 86400) + 'd';
 
         return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    }
-
-    async function updateBadge() {
-        try {
-            const res = await fetch('/api/notifications', {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            const notifications = await res.json();
-            const unread = notifications.filter(n => !n.is_read).length;
-            const badge = document.getElementById('notificationBadge');
-
-            if (badge) {
-                if (unread > 0) {
-                    badge.textContent = unread > 99 ? '99+' : unread;
-                    badge.style.display = 'flex';
-                } else {
-                    badge.style.display = 'none';
-                }
-            }
-        } catch (err) {
-            console.error(err);
-        }
     }
 });
