@@ -106,10 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const content = textarea.value.trim();
-            console.log('Content length:', content.length);
+            const rawContent = textarea.value;
+            const content = rawContent.trim();
+            console.log('Content length:', rawContent.length);
             if (!content) return;
-            if (content.length > 280) {
+            if (rawContent.length > 280) {
                 console.log('BLOCKED: Post exceeds 280 chars');
                 alert('Post exceeds 280 characters limit');
                 return;
