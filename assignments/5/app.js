@@ -6,7 +6,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
 app.use(express.static('public'));
-const{notFound, errorHandler} = require('./middlewares/errorHandlers');
+const { notFound, errorHandler } = require('./middlewares/errorHandler');
 
 // Initialize database tables
 initializeDatabase();
