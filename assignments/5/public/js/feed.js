@@ -108,7 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const content = textarea.value.trim();
             if (!content) return;
-            if (content.length > 280) return;
+            if (content.length > 280) {
+                alert('Post exceeds 280 characters limit');
+                return;
+            }
 
             try {
                 const res = await fetch('/api/posts', {
