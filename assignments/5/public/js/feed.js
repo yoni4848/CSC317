@@ -107,11 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const content = textarea.value.trim();
+            console.log('Content length:', content.length);
             if (!content) return;
             if (content.length > 280) {
+                console.log('BLOCKED: Post exceeds 280 chars');
                 alert('Post exceeds 280 characters limit');
                 return;
             }
+            console.log('ALLOWED: Posting...');
 
             try {
                 const res = await fetch('/api/posts', {
