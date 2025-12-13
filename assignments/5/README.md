@@ -1,92 +1,99 @@
-# CSC317 - Chirp (Twitter like app) (Assignment 5)
+# Chirp
 
-This repository contains the source code for **Assignment 5** of the CSC317 Web Programming course. This project is a full-stack web application designed to allow users to register, log in, post images, and search for content, effectively integrating the frontend UI with a Node.js backend and MySQL database.
+A Twitter-inspired social media application built with Node.js, Express, and PostgreSQL.
 
-## 📸 Features
+**Live Demo:** [chirp-gzkx.onrender.com](https://chirp-gzkx.onrender.com)
 
-*   **User Management**:
-    *   User Registration (Server-side validation included).
-    *   User Login (Session management).
-    *   Logout functionality.
-*   **Post Management**:
-    *   Create new posts with image upload (via Multer).
-    *   Add titles and descriptions to posts.
-    *   Posts are persisted in a MySQL database.
-*   **Viewing & Interaction**:
-    *   **Dashboard/Home**: View the latest photos uploaded by users.
-    *   **Post Details**: Click on a photo to view specific details and comments.
-    *   **Search**: Search for posts by keyword.
-    *   **Comments**: Authenticated users can leave comments on photos.
+## Features
 
-## 🛠 Technology Stack
+- **Authentication** - Register/login with JWT-based sessions
+- **Posts** - Create, view, and delete posts (280 character limit)
+- **Comments** - Comment on posts with inline expansion
+- **Likes** - Like/unlike posts
+- **Follow System** - Follow/unfollow users
+- **Feed** - Explore (all posts) and personalized feed (following)
+- **Search** - Search for users and posts
+- **Notifications** - Real-time notifications for likes, comments, and follows
+- **Profiles** - View profiles, edit bio, see follower/following counts
 
-*   **Frontend**: HTML5, CSS3, JavaScript (Vanilla).
-*   **Backend**: Node.js, Express.js.
-*   **Database**: POSTGRESQL.
-*   **Key Libraries**:
-    *   `mysql2`: Database connectivity.
-    *   `express-session` & `express-mysql-session`: Session handling.
-    *   `bcrypt`: Password hashing.
-    *   `multer`: Handling file uploads.
+## Tech Stack
 
-## 📂 Project Structure
+- **Backend:** Node.js, Express.js
+- **Database:** PostgreSQL
+- **Frontend:** HTML, CSS, JavaScript
+- **Authentication:** JWT (JSON Web Tokens)
+- **Deployment:** Render
 
-```text
-/assignments/5
-├── public/
-│   ├── css/            # Stylesheets
-│   ├── js/             # Client-side JavaScript
-│   └── uploads/        # Directory for uploaded images
-├── routes/
-│   ├── index.js        # Main navigation routes
-│   ├── users.js        # Authentication routes
-│   └── posts.js        # Post creation and retrieval routes
-├── views/
-│   ├── layouts/        # Main layout file
-│   ├── partials/       # Reusable HBS components (header, footer)
-│   └── *.hbs           # Page templates
-├── middleware/         # Custom middleware (validation, auth check)
-├── config/             # Database configuration
-├── app.js              # Server entry point
-└── package.json
-🚀 Getting Started
-Follow these instructions to run the project locally.
-Prerequisites
-Node.js (v14+)
-MySQL Community Server
-Installation
-Navigate to the directory:
-code
-Bash
-cd assignments/5
-Install Dependencies:
-code
-Bash
-npm install
-Database Setup:
-Log into your MySQL Workbench or CLI.
-Run the provided SQL script (usually located in the root or a /sql folder) to create the database schema (Tables: users, posts, comments).
-If no SQL file is present, ensure you have a database named csc317db configured.
-Configuration:
-Open .env (or config/database.js if hardcoded) and update your database credentials:
-code
-Env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=csc317db
-Running the Application
-Start the server:
-code
-Bash
-npm start
-Note: If you have nodemon installed, you can usually run npm run dev.
-View in Browser:
-Open http://localhost:3000
- Testing
-Registration: Try creating a new account. Ensure password validation rules work.
-Login: Log in with the new account.
-Upload: Navigate to the "Post" page and upload an image. Verify it appears on the home page.
-Search: Use the search bar to find your post by title.
- License
-This project is created for educational purposes for the CSC317 course.
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14+)
+- PostgreSQL
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yoni4848/CSC317.git
+   cd CSC317/assignments/5
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables
+   ```bash
+   # Create a .env file with:
+   DB_USER=your_db_user
+   DB_HOST=localhost
+   DB_NAME=chirp
+   DB_PASSWORD=your_password
+   DB_PORT=5432
+   JWT_SECRET=your_secret_key
+   ```
+
+4. Initialize the database
+   ```bash
+   psql -d chirp -f database/schema.sql
+   ```
+
+5. Start the server
+   ```bash
+   npm start
+   ```
+
+6. Open [http://localhost:3001](http://localhost:3001)
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register new user |
+| POST | `/api/auth/login` | Login user |
+| GET | `/api/posts` | Get all posts |
+| POST | `/api/posts` | Create a post |
+| DELETE | `/api/posts/:id` | Delete a post |
+| POST | `/api/posts/:id/like` | Like a post |
+| DELETE | `/api/posts/:id/like` | Unlike a post |
+| GET | `/api/posts/:id/comments` | Get comments |
+| POST | `/api/posts/:id/comments` | Add comment |
+| DELETE | `/api/comments/:id` | Delete comment |
+| GET | `/api/users/:id` | Get user profile |
+| POST | `/api/users/:id/follow` | Follow user |
+| DELETE | `/api/users/:id/follow` | Unfollow user |
+| GET | `/api/timeline` | Get personalized feed |
+| GET | `/api/explore` | Get all posts |
+| GET | `/api/search` | Search users/posts |
+| GET | `/api/notifications` | Get notifications |
+
+## Team
+
+| Member | Role |
+|--------|------|
+| Adarsha Bomjan | Frontend |
+| Favour Godbless | Frontend |
+| Yonas Melkie | Database & API |
+| Roberto Ledesma | Middleware |
