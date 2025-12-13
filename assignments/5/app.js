@@ -6,6 +6,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 app.use(express.json());
 app.use(express.static('public'));
+const{notFound, errorHandler} = require('./middlewares/errorHandlers');
 
 // Initialize database tables
 initializeDatabase();
@@ -47,7 +48,14 @@ app.get('/api/info', (req, res) => {
         version: 1.0
     });
 });
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
+
+
+module.exports = app;
